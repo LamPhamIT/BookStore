@@ -1,0 +1,218 @@
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --font-color: #333;
+    --orange-color: #f26522;
+    --orange-primary-color: #da5b1f;
+    --grey-color: rgb(235, 235, 235);
+}
+.main {
+    width: 100%;
+    padding: 30px 10px;
+    background-color: rgb(238, 238, 238);
+}
+.aside {
+    /* padding: 20px 0px; */
+    
+}
+.aside h3 {
+    color: gray;
+    padding-bottom: 10px;
+    border-bottom: 3px solid gray;
+}
+.nav_list {
+    padding-left: 0;
+    list-style:none;
+}
+.nav_link {
+   
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(236, 236, 236);
+}
+
+.nav_link a {
+    color: gray;
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.nav_link a:hover{
+    color: var(--orange-color);
+}
+
+.nav_link:last-child {
+    border-bottom: none;
+}
+
+.title {
+    color: rgb(87, 86, 86);
+    padding: 10px 0;
+}
+.blog span {
+    color: gray;
+}
+.social div{
+    color: var(--font-color);
+    padding: 8px;
+    border: 1px solid rgb(219, 0, 0);
+    border-radius: 50%;
+    margin: 0 5px;
+}
+.social .fa-facebook-square {
+    background-color: rgb(103, 103, 253);
+    color: white;
+    border-color: rgb(103, 103, 253);
+}
+.fa-facebook-square:hover{
+    background-color: white;
+    color: rgb(103, 103, 253);
+    border-color:rgb(103, 103, 253);
+}
+.social .fa-twitter {
+    background-color: rgb(29, 161, 242);
+    color: white;
+    border-color:rgb(29, 161, 242);
+}
+
+.fa-twitter:hover{
+    background-color: white;
+    color: rgb(29, 161, 242);
+}
+.social .fa-pinterest {
+    background-color: rgb(230, 0, 35);
+    color: white;
+    border-color: rgb(230, 0, 35);
+}
+.fa-pinterest:hover {
+    background-color: white;
+    color:rgb(230, 0, 35);
+}
+.social .fa-google {
+    background-color: var(--orange-color);
+    color: white;
+    border-color: var(--orange-color);
+}
+.fa-google:hover {
+    background-color: white;
+    color: var(--orange-color);
+}
+.blog a {
+    text-decoration: none;
+}
+.blog p {
+    color: var(--font-color);
+}
+.blog img {
+   position: relative;
+   left: 50%;
+   transform: translateX(-50%);
+}
+.user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    float: left
+}
+.user-image img {
+    border-radius: 50%;
+}
+.article-comment {
+    padding: 20px 0;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+.article-user-comment {
+    margin-left: 70px;
+}
+.user-name {
+    font-size: 1.2rem;
+    color: var(--font-color);
+    font-weight: bold;
+}
+.comment-date {
+    color: gray;
+    display: block;
+}
+.article-user-comment p {
+    color: var(--font-color);
+}
+
+.form-comment {
+    padding: 20px 0;
+    border-top: 1px solid rgb(224, 224, 224);
+    position: relative;
+
+}
+.form-comment input {
+    color: var(--font-color);
+    width: 100%;
+    padding: 8px 5px;
+    border: none;
+}
+.form-comment input:focus {
+    outline: none;
+}
+.form-comment button {
+    padding: 7px 4px;
+    border: none;
+    color: var(--white-color);
+    background-color: var(--orange-color);
+    position: absolute;
+    right: 0%;
+    border: 1px solid var(--orange-color)
+}
+.form-comment button:hover {
+    color: var(--orange-color);
+    background-color: white;
+    
+}
+.blogs-wrapper {
+    /* text-align: center; */
+
+}
+.blogs-wrapper>.row>span{
+    color: var(--font-color);
+    font-size: 1.8rem;
+    padding: 10px 10px;    
+
+}
+.summary-blog {
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(219, 219, 219);
+}
+.summary-blog span {
+    color: gray;
+}
+.blog-name>a{
+    text-decoration: none;
+    /* display: block; */
+    font-size: 1.4rem;
+    color: gray;
+    text-align: left;
+
+    /* font-weight: bold; */
+}
+.created-date {
+    color: gray;
+    display: block;
+    text-align: left;
+    padding: 10px 0;
+}
+.summary-blog p{
+    color: black;
+    padding: 5px 0;
+    margin-bottom: 0;
+}
+.summary-blog a {
+    display: block;
+    width: 100%;
+}
+.summary-blog img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+

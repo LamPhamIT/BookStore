@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400&display=swap');
+
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --font-color: #333;
+    --orange-color: #f26522;
+    --orange-primary-color: #da5b1f;
+    --grey-color: rgb(235, 235, 235);
+}
+
+.main {
+    width: 100%;
+    background-color: rgb(238, 238, 238);
+
+}
+.title {
+    color: var(--font-color);
+    font-size: 1.6rem;
+    /* font-weight: 400; */
+    display: block;
+    padding: 20px 0;
+}
+
+.signup-form, .signin-form{
+    width: 100%;
+    padding-bottom: 40px;
+}
+.signup-form input, .input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgb(223, 223, 223);
+    color: var(--font-color);
+    margin-bottom: 20px;
+}
+.signup-form input:focus,.input:focus{
+    outline: none;
+}
+label {
+    color: var(--font-color);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.signup-form button, .signin-form button, .password-submit {
+    margin-top: 20px;
+    color: white;
+    background-color: var(--orange-color);
+    border: 1px solid var(--orange-color);
+    padding: 10px 30px;
+    margin-bottom: 30px;
+}
+.signup-form button:hover, .signin-form button:hover, .password-submit:hover{
+    background-color: white;
+    color: var(--orange-color);
+    border: 1px solid var(--orange-color);
+}
+.signup-form a, .signin-form a{
+    display: inline-block;
+    color: var(--font-color);
+    padding: 10px 20px;
+}
+form a:hover {
+    color: var(--orange-color);
+}
+sup {
+    color: red;
+    padding: 2px;
+}
+p {
+    color: var(--font-color);
+}
+.signin-form .phone-number-input {
+    margin-bottom: 0px;
+}
+.sigin-form .password-submit {
+    margin-top: 0;
+    margin-bottom: 0;
+}
