@@ -42,7 +42,7 @@
                             <div class="fas fa-lock"></div>
                             ĐĂNG NHẬP
                         </a>
-                        <a href="#">
+                        <a href="<c:url value="/dang-ky?action=signup"/> ">
                             <div class="fas fa-sign-in-alt"></div>
                             ĐĂNG KÝ
                         </a>

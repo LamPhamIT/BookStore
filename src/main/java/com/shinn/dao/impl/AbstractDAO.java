@@ -57,6 +57,41 @@ public class AbstractDAO<T> implements GenericDAO<T> {
         }
     }
 
+    @Override
+    public <T1> Long insert(String sql, Object... parameters) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = getConnection();
+            statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            setParameter(statement, parameters);
+            statement.executeUpdate();
+            resultSet = statement.getGeneratedKeys();
+            while(resultSet.next()) {
+                return resultSet.getLong(1);
+            }
+//            connection.commit();
+            return null;
+        } catch (SQLException e) {
+            return null;
+        } finally {
+            try {
+                if(connection != null) {
+                    connection.close();
+                }
+                if(statement != null) {
+                    statement.close();
+                }
+                if(resultSet != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                return null;
+            }
+        }
+    }
+
     private void setParameter(PreparedStatement statement, Object... parameters) {
         try {
             for (int i = 0; i < parameters.length; i++) {

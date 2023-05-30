@@ -17,10 +17,11 @@ import javax.inject.Inject;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
-@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap"})
+@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/dang-ky"})
 public class HomeController extends HttpServlet {
-//    @Inject
+    //    @Inject
     private IUserService userService;
+
     public HomeController() {
         userService = new UserService();
     }
@@ -42,6 +43,16 @@ public class HomeController extends HttpServlet {
         } else if (action != null && action.equals("logout")) {
             SessionUtil.getInstance().removeValue(req, SystemConstant.USER);
             resp.sendRedirect(req.getContextPath() + "/dang-nhap?action=login");
+        } else if (action != null && action.equals("signup")) {
+            SessionUtil.getInstance().removeValue(req, SystemConstant.USER);
+            String message = req.getParameter("message");
+            String alert = req.getParameter("alert");
+            if(message != null && alert != null) {
+                req.setAttribute("message", resourceBundle.getString(message));
+                req.setAttribute("alert", alert);
+            }
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/web/Signup.jsp");
+            requestDispatcher.forward(req, resp);
         } else {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/web/Home.jsp");
             requestDispatcher.forward(req, resp);
@@ -63,6 +74,17 @@ public class HomeController extends HttpServlet {
                 }
             } else {
                 resp.sendRedirect(req.getContextPath() + "/dang-nhap?action=login&message=username_password_unvalid&alert=danger");
+            }
+        } else if (action != null && action.equals("signup")) {
+            UserModel user = FormUtil.toModel(UserModel.class, req);
+            if(user != null) {
+                Long id = userService.insertOne(user);
+                if(id == null) {
+                    resp.sendRedirect(req.getContextPath() + "/dang-ky?action=signup&message=signup_fail&alert=danger");
+                } else {
+                    SessionUtil.getInstance().putValue(req, SystemConstant.USER, user);
+                    resp.sendRedirect(req.getContextPath() + "/trang-chu");
+                }
             }
         }
     }
