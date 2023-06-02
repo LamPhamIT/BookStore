@@ -1,24 +1,31 @@
 package com.shinn.api.resource.v1;
 
-import com.shinn.dao.idao.IUserDAO;
-import com.shinn.dao.impl.UserDAO;
-import com.shinn.model.UserModel;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import com.shinn.model.ProductModel;
+import com.shinn.services.IService.IProductService;
+import com.shinn.services.impl.ProductService;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
 @Path("v1/books")
 public class ProductResource {
-    public IUserDAO userDAO;
-    public ProductResource() {
-        userDAO = new UserDAO();
-    }
-    @GET
+   private IProductService productService;
+   public ProductResource() {
+       productService = new ProductService();
+   }
+
+   @GET
+   @Produces(MediaType.APPLICATION_JSON)
+   public List<ProductModel> getAll() {
+       return productService.findAll();
+   }
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public List<UserModel> getAllUser() {
-        return userDAO.findAll();
+    @Consumes(MediaType.APPLICATION_JSON)
+    public ProductModel saveOne(ProductModel product) {
+        Long id = productService.save(product);
+        return productService.findOne(id);
     }
+
 }

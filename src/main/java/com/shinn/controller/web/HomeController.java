@@ -19,7 +19,6 @@ import java.util.ResourceBundle;
 
 @WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/dang-ky"})
 public class HomeController extends HttpServlet {
-    //    @Inject
     private IUserService userService;
 
     public HomeController() {

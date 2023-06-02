@@ -5,6 +5,7 @@ import com.shinn.dao.impl.UserDAO;
 import com.shinn.model.UserModel;
 import com.shinn.services.IService.IUserService;
 import javax.inject.Inject;
+import java.util.List;
 
 public class UserService implements IUserService {
 //    @Inject
@@ -20,5 +21,10 @@ public class UserService implements IUserService {
     @Override
     public Long insertOne(UserModel user) {
         return userDAO.insertOne(user);
+    }
+
+    @Override
+    public List<UserModel> findAll() {
+        return userDAO.findAll();
     }
 }

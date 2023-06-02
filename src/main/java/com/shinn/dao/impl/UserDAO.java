@@ -9,7 +9,7 @@ import java.util.List;
 public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     @Override
     public List<UserModel> findAll() {
-        String sql = "SELECT * FROM User";
+        String sql = "SELECT * FROM User as u INNER JOIN Role as r ON u.Role_ID=r.Role_ID";
         return query(sql, new UserMapper());
     }
 

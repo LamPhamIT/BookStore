@@ -15,5 +15,5 @@ public class AbstractModel implements Serializable {
     private Timestamp createdDate;
     private Timestamp modifiedDate;
     private Long modifiedBy;
-    private Timestamp deletedDad;
+    private Timestamp deletedDade;
 }
