@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface ICategoryDAO {
     public List<CategoryModel> findAll();
+    public CategoryModel findByCategoryCode(String categoryCode);
 }

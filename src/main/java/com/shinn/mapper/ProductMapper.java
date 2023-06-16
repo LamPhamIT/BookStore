@@ -18,10 +18,12 @@ public class ProductMapper implements RowMapper<ProductModel>{
             product.setDescription(resultSet.getString("Description"));
             product.setPrice(resultSet.getLong("Price"));
             product.setDiscount(resultSet.getLong("Discount"));
+            product.setRemainQuality(resultSet.getInt("Remain_Quality"));
             CategoryModel category = new CategoryModel();
             try {
                 category.setId(resultSet.getLong("Category_ID"));
                 category.setCategoryName(resultSet.getString("Category_Name"));
+                category.setCategoryCode(resultSet.getString("Category_Code"));
                 product.setCategory(category);
             }catch(Exception e) {
                 product.setCategory(category);

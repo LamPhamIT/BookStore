@@ -7,6 +7,7 @@
 --%>
 <%@ include file="/common/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<c:url var="APIurl" value="/com/shinn/api/v1/books"></c:url>--%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,18 +23,38 @@
 
     <!-- Custom fonts for this template -->
 <%--    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
-    <link rel="stylesheet" href="<c:url value="/template/admin/vendor/fontawesome-free/css/all.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="/template/admin/vendor/fontawesome-free"/>">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom styles for this template -->
 <%--    <link href="css/sb-admin-2.css" rel="stylesheet">--%>
-
     <link rel="stylesheet" href="<c:url value="/template/admin/css/sb-admin-2.css"/>">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Custom styles for this page -->
+
 <%--    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="<c:url value="/template/admin/vendor/datatables/dataTables.bootstrap4.min.css"/>">
+    <style>
+        form {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            width: 700px;
+
+        }
+        form span {
+            margin-top: 20px;
+        }
+        form input{
+            width: 100%;
+            padding: 3px 10px;
+        }
+        #btnAddOrUpdate {
+            width: 20%;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -46,7 +67,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<c:url value="/admin-trang-chu"/>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -88,7 +109,7 @@
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="BookManage.html">
+            <a class="nav-link" href="<c:url value="/admin-quan-ly-sach?page=1&maxPageItem=3&sortBy=Product_ID&sortName=asc"/>">
                 <i class="fas fa-book"></i>
                 <span>Quản lý sách</span>
             </a>
@@ -309,10 +330,13 @@
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                        </a>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><c:if test="${not empty User}">
+                                ${User.firstName}
+                            </c:if></span>
+                        <img class="img-profile rounded-circle"
+                             src="https://i.pinimg.com/custom_covers/222x/734790564142559148_1588646204.jpg">
+                    </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
@@ -344,71 +368,65 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <span>Quản lý User</span>
-                        <div class="text-right">
-                            <a flag="info" class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-                               data-toggle="tooltip" title='Thêm san pham' href='#'>
-                                    <span>
-                                        <i class="fa fa-plus-circle bigger-110 purple"></i>
-                                    </span>
-                            </a>
-                            <button id="btnDelete" type="button"
-                                    class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-                                    data-toggle="tooltip" title='Xóa san pham'>
-                                    <span>
-                                        <i class="fa-solid fa-trash"></i>
-                                    </span>
-                            </button>
-                        </div>
-                        <!-- <form action="GET" class="form-input">
-                            <span>Title:</span>
-                            <input type="text">
-                            <span>Thumbnail: </span>
-                            <input type="text">
-                            <span>Description</span>
+                <!-- <div class="row"> -->
+                <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-12"> -->
 
-                        </form> -->
-                    </div>
-                </div>
+
+                <form action="POST" id="form-input">
+                    <span>Title:</span>
+                    <input type="text" name="title" id="title" value="${editProduct.title}">
+
+                    <span>Thumbnail: </span>
+                    <input type="text" name="thumbnail" id="thumbnail" value="${editProduct.thumbnail}">
+
+                    <span>Description</span>
+                    <!-- <input type="text-area"> -->
+                    <textarea name="description" cols="53" rows="10" id="description" value="${editProduct.description}">${editProduct.description}</textarea>
+
+                    <span>Price: </span>
+                    <input type="text" name="price" id="price" value="${editProduct.price}">
+
+                    <span>Discount: </span>
+                    <input type="text" name="discount" id="discount" value="${editProduct.discount}">
+
+                    <span>Quantity: </span>
+                    <input type="text" name="remainQuality" id="remainQuality" value="${editProduct.remainQuality}">
+
+                    <span>Category: </span>
+                    <select name="categoryCode" id="categoryCode">
+                           <c:if test="${empty editProduct}">
+                               <option value="">Chọn thể loại</option>
+                               <c:forEach var="i" items="${listCategory}">
+                                   <option value="${i.categoryCode}">${i.categoryName}</option>
+                               </c:forEach>
+                           </c:if>
+                            <c:if test="${not empty editProduct}">
+                                <c:forEach var="i" items="${listCategory}">
+                                    <option value="${i.categoryCode}" <c:if test="${editProduct.category.categoryCode == i.categoryCode}">selected="selected"</c:if> >${i.categoryName}</option>
+                                </c:forEach>
+                                <option value="">Chọn thể loại</option>
+                            </c:if>
+                    </select>
+                    <br>
+                    <input type="hidden" name="id" id="id" value="${editProduct.id}">
+
+                    <c:if test="${not empty editProduct}">
+                        <button class="btn btn-primary" value="cap nhat" id="btnAddOrUpdate">
+                            Cập nhật
+                        </button>
+                    </c:if>
+                    <c:if test="${empty editProduct}">
+                        <button class="btn btn-primary" value="them moi" id="btnAddOrUpdate">
+                            Thêm mới
+                        </button>
+                    </c:if>
+
+                </form>
+                <!-- </div> -->
+                <!-- </div> -->
                 <!-- <input type="file"> -->
                 <!-- DataTales Example -->
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary"></h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>User ID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Phone number</th>
-                                    <th>Role</th>
-                                    <!-- <th>Salary</th> -->
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Lam</td>
-                                    <td>Pham</td>
-                                    <td>Lamtkhtk2004@gmail.com</td>
-                                    <td>0385979034</td>
-                                    <td>Admin</td>
-                                    <td><a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                           title="Cập san pham" href='#'><i class="fa-solid fa-pencil"></i>
-                                    </a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
             <!-- /.container-fluid -->
@@ -470,9 +488,67 @@
 <script src="<c:url value="/template/admin/js/sb-admin-2.min.js"/>"></script>
 <!-- Page level plugins -->
 <%--<script src="vendor/datatables/jquery.dataTables.min.js"></script>--%>
-<script src="<c:url value="/template/admin/vendor/datatables/jquery.dataTables.min.js"/>"></script>
+<scrip src="<c:url value="/template/admin/vendor/datatables/jquery.dataTables.min.js"/>"></scrip>
 <%--<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>--%>
 <script src="<c:url value="/template/admin/vendor/datatables/dataTables.bootstrap4.min.js"/>"></script>
+<script>
+    $('#btnAddOrUpdate').click(function (e) {
+        e.preventDefault();
+        let data={};
+        let formData = $('#form-input').serializeArray();
+        $.each(formData, function(i, v) {
+
+            data['' + v.name +''] = v.value;
+        });
+        let id = $('#id').val();
+        if(id== '') {
+            addProduct(data);
+            setTimeout(() => {
+                location.reload();
+            }, 3000);
+        } else {
+            updateProduct(data);
+            setTimeout(() => {
+                location.reload();
+            }, 3000);
+        }
+        // alert(data);
+        function addProduct(data) {
+
+            $.ajax({
+
+                url: 'api/v1/books',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                dataType: 'json',
+                success: function (result) {
+                    alert('Add book success');
+                },
+                fail: function (error) {
+                    alert('Add book fail');
+                }
+
+            })
+        }
+        function updateProduct(data) {
+            $.ajax({
+                url: 'api/v1/books',
+                type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                dataType: 'json',
+                success: function (result) {
+                    alert('Update book success');
+                },
+                fail: function (error) {
+                    alert('Update book fail');
+                }
+            })
+        }
+    });
+
+</script>
 <!-- Page level custom scripts -->
 <%--<script src="js/demo/datatables-demo.js"></script>--%>
 <script src="<c:url value="/template/admin/js/demo/datatables-demo.js"/>"></script>

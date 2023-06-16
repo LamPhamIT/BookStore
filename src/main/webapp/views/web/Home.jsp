@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="<c:url value="/template/web/assets/css/base.css"/>">
     <%--    <link rel="stylesheet" href="assets/css/home.css">--%>
     <link rel="stylesheet" href="<c:url value="/template/web/assets/css/home.css"/>">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <%--    <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-5.0.2-dist/css/bootstrap.css">--%>
@@ -25,6 +26,39 @@
 </head>
 
 <body>
+<div class="background-cover">
+
+</div>
+<div class="quickview-product">
+    <i class="fas fa-times"></i>
+    <div class="quickview-thumnail">
+        <img
+                src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
+                alt="">
+    </div>
+    <div class="quickview-infor">
+      <span class="name">Đi qua hoa cúc
+      </span>
+        <span>Tình trạng: </span>
+        <span class="status">Còn hàng</span>
+        <span> | Loại: </span>
+        <span class="category">Sách tuổi teen</span>
+        <div class="price-infor left">
+        <span class="sale-price">
+          63.00<sup>đ</sup>
+        </span>
+            <span class="price">50.00<sup>đ</sup></span>
+        </div>
+        <form class="amount-form quickview-form">
+            <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-
+            </div>
+            <input type="number" id="number" value="0" style="color: gray" />
+            <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+
+            </div>
+        </form>
+        <a href="#" class="add-to-cart-primary">Thêm vào giỏ</a>
+    </div>
+</div>
 <!-- <ul class="mobile-nav">
   <li><a href="#">Trang chủ</a></li>
   <li><a href="#">Giới thiệu</a></li>
@@ -49,7 +83,7 @@
                     </c:if>
                     <c:if test="${not empty User}">
                         <a href="#">
-<%--                            <div class="fas fa-sign-in-alt"></div>--%>
+                                <%--                            <div class="fas fa-sign-in-alt"></div>--%>
                             WELCOME ${User.firstName}
                         </a>
                         <a href="<c:url value="/dang-nhap?action=logout"/>">
@@ -65,19 +99,18 @@
         </div>
     </div>
 </div>
-<header>
+<header style="position: relative;z-index: 8 !important;">
     <div class="mid-header wid_100">
         <div class="container">
             <div class="row">
                 <div class="col-sm-3 col-md-4 col-3 menu-bar d-lg-none">
-                    <input type="checkbox" class="checkbox-input" id="checkbox-input"></input>
-                    <%--                    <label for="nav__bars-input"class="fa fa-bars"></label>--%>
+                    <input type="checkbox" class="checkbox-input" id="checkbox-input">
+                    <label for="nav__bars-input" class="fa fa-bars"></label>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-5">
                     <div class="logo">
                         <a href="/" class="logo-wrapper">
-                            <img src="https://bizweb.dktcdn.net/100/047/782/themes/877502/assets/logo.png?1676015839422"
-                                 alt="logo">
+                            <img src="https://bizweb.dktcdn.net/100/047/782/themes/877502/assets/logo.png?1676015839422" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -112,6 +145,7 @@
                 </div>
 
                 <div class="col-lg-3 col-md-4 col-sm-3 col-4">
+
                     <div class="header-right float-end d-none d-sm-none d-md-block">
                         <a href="" class="hover-cart">
                             <div class="fa fa-shopping-bag"></div>
@@ -119,18 +153,58 @@
                             <span class="hidden-xs">SẢN PHẨM</span>
                             <div class="fa fa-sort-down"></div>
                         </a>
+                        <div class="cart-small">
+                            <div class="cart-product">
+                                <div class="row g-0">
+                                    <div class="col-lg-3 col-md-3 col-3">
+                                        <img
+                                                src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
+                                                alt="" class="small-thumbnail">
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-8">
+                                        <span class="small-title">Tooi thay hoa vang tren co xanh</span>
+                                        <span class="sale-price">
+                                63.00<sup>đ</sup>
+                                 </span>
+
+                                        <form class="amount-form">
+                                            <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value">-
+                                            </div>
+                                            <input type="number" id="number" value="0" style="color: gray" />
+                                            <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value">+
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                    <div class="col-lg-1 col-md-1 col-1">
+                                        <i class="fas fa-trash"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cart-subtotal">
+                                <span style="color: black; font-size: 1.6rem;">Tổng cộng:</span>
+                                <span class="total">
+                             63.00<sup>đ</sup>
+                        </span>
+                            </div>
+                            <div class="services">
+                                <a href="#" class="cart-btn">Giỏ hàng</a>
+                                <a href="#" class="pay-btn">Thanh toán</a>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="header-right-mobile d-xs-block d-md-none">
                         <div class="fa fa-shopping-bag float-end"></div>
                         <span>12</span>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </header>
-<nav>
-
+<nav style="position: relative; z-index: 1;">
     <div class="container">
         <div class="row">
             <div class="col-lg-9 col-md-0 col-sm-0 col-0 d-none d-md-none d-lg-block">
@@ -146,9 +220,12 @@
                             </a>
 
                                 <ul class="sub-menu">
-                                    <li><a href="#">Tạp chí</a></li>
-                                    <li><a href="#">Truyện tranh</a></li>
-                                    <li><a href="#">Sách kính tế</a></li>
+                                    <c:forEach var="i" items="${listCategory}">
+                                        <c:url value="/danh-muc" var="categoryURL">
+                                            <c:param name="categoryCode" value="${i.categoryCode}"/>
+                                        </c:url>
+                                        <li><a href="${categoryURL}">${i.categoryName}</a></li>
+                                    </c:forEach>
                                 </ul>
 
                             </li>
@@ -159,8 +236,8 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 col-12">
-                <form action="GET" class="search-form">
-                    <input type="text" placeholder="Tìm kiếm">
+                <form action="<c:url value=""/>" method="GET" class="search-form">
+                    <input type="text" placeholder="Tìm kiếm" name="query">
                     <button type="submit">
                         <i class="fas fa-search"></i>
                     </button>
@@ -204,43 +281,54 @@
                   <div class="fas fa-arrow-right"></div>
                 </span>
                         </div>
-                        <div class="product-block">
-                            <div class="product-box">
-                                <div class="product-thumbnail">
-                                    <a href="#" class="product-link">
-                                        <img
-                                                src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                alt="">
-                                        </img>
-                                    </a>
-                                    <a href="#" class="cover">
-                                        <div class="cover-layout">
+                        <c:forEach var="i" begin="0" end="0" items="${listSale}">
+                            <div class="product-block">
+                                <div class="product-box">
+                                    <div class="product-thumbnail">
+                                        <a href="#" class="product-link">
+                                            <img
+                                                    src="${i.thumbnail}"
+                                                    alt="">
+                                            </img>
+                                        </a>
+                                        <a href="#" class="cover">
+                                            <div class="cover-layout">
 
-                                        </div>
-                                        <div class="eye">
-                                            <div class="fas fa-eye"></div>
-                                        </div>
+                                            </div>
+                                            <div class="eye">
+                                                <div class="fas fa-eye"></div>
+                                            </div>
 
-                                    </a>
+                                        </a>
 
-                                </div>
-                                <div class="product-infor">
-                                    <span class="product-name">Đi qua hoa cúc</span>
-                                    <div class="price-infor">
-                      <span class="sale-price">
-                        63.00<sup>đ</sup>
-                      </span>
-                                        <span class="price">50.00<sup>đ</sup></span>
                                     </div>
-                                    <form action="POST" class="add-to-cart">
-                                        <button type="submit">
-                                            <div class="fa fa-shopping-bag"></div>
-                                            Thêm vào giỏ
-                                        </button>
-                                    </form>
+                                    <div class="product-infor">
+                                        <span class="product-name">${i.title}</span>
+                                        <div class="price-infor">
+                                            <c:if test="${i.discount > 0}">
+                                                      <span class="sale-price">
+                                                    ${i.discount}<sup>đ</sup>
+                                                  </span>
+                                                <span class="price">${i.price}<sup>đ</sup></span>
+                                            </c:if>
+                                            <c:if test="${i.discount <= 0}">
+                                                    <span class="sale-price">
+                                                    ${i.price}<sup>đ</sup>
+                                                  </span>
+                                            </c:if>
+                                        </div>
+                                        <form action="" method="POST" id="addToCart" class="add-to-cart">
+                                            <button type="submit">
+                                                <div class="fa fa-shopping-bag"></div>
+                                                Thêm vào giỏ
+                                            </button>
+                                            <input type="hidden" name="product_id" value="${i.id}">
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </c:forEach>
+
                     </div>
                     <div class="contact-block">
                         <div class="title-box">
@@ -339,477 +427,116 @@
                 </span>
                         </div>
                         <div class="row g-0">
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="product-block col-product">
-                                    <div class="product-box">
-                                        <div class="product-thumbnail">
-                                            <a href="#" class="product-link">
-                                                <img
-                                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                        alt="">
-                                                </img>
+                            <c:forEach var="i" items="${listLatest}">
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="product-block col-product">
+                                        <div class="product-box">
+                                            <div class="product-thumbnail">
+                                                <a href="#" class="product-link">
+                                                    <img
+                                                            src="${i.thumbnail}"
+                                                            alt="">
+                                                    </img>
 
-                                            </a>
-                                            <a href="#" class="cover">
-                                                <div class="cover-layout">
+                                                </a>
+                                                <a href="#" class="cover">
+                                                    <div class="cover-layout">
 
-                                                </div>
-                                                <div class="eye">
-                                                    <div class="fas fa-eye"></div>
-                                                </div>
+                                                    </div>
+                                                    <div class="eye">
+                                                        <div class="fas fa-eye"></div>
+                                                    </div>
 
-                                            </a>
+                                                </a>
 
-                                        </div>
-                                        <div class="product-infor">
-                                            <span class="product-name">Đi qua hoa cúc</span>
-                                            <div class="price-infor">
-                          <span class="sale-price">
-                            63.00<sup>đ</sup>
-                          </span>
-                                                <span class="price">50.00<sup>đ</sup></span>
                                             </div>
-                                            <form action="POST" class="add-to-cart">
-                                                <button type="submit">
-                                                    <div class="fa fa-shopping-bag"></div>
-                                                    Thêm vào giỏ
-                                                </button>
-                                            </form>
+                                            <div class="product-infor">
+                                                <span class="product-name">${i.title}</span>
+                                                <div class="price-infor">
+                                                    <c:if test="${i.discount > 0}">
+                                                      <span class="sale-price">
+                                                    ${i.discount}<sup>đ</sup>
+                                                  </span>
+                                                        <span class="price">${i.price}<sup>đ</sup></span>
+                                                    </c:if>
+                                                    <c:if test="${i.discount <= 0}">
+                                                    <span class="sale-price">
+                                                    ${i.price}<sup>đ</sup>
+                                                  </span>
+                                                    </c:if>
+                                                </div>
+                                                <form action="POST" class="add-to-cart">
+                                                    <button type="submit">
+                                                        <div class="fa fa-shopping-bag"></div>
+                                                        Thêm vào giỏ
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="product-block col-product">
-                                    <div class="product-box">
-                                        <div class="product-thumbnail">
-                                            <a href="#" class="product-link">
-                                                <img
-                                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                        alt="">
-                                            </a>
-                                            <a href="#" class="cover">
-                                                <div class="cover-layout">
-
-                                                </div>
-                                                <div class="eye">
-                                                    <div class="fas fa-eye"></div>
-                                                </div>
-
-                                            </a>
-
-                                        </div>
-                                        <div class="product-infor">
-                                            <span class="product-name">Đi qua hoa cúc</span>
-                                            <div class="price-infor">
-                          <span class="sale-price">
-                            63.00<sup>đ</sup>
-                          </span>
-                                                <span class="price">50.00<sup>đ</sup></span>
-                                            </div>
-                                            <form action="POST" class="add-to-cart">
-                                                <button type="submit">
-                                                    <div class="fa fa-shopping-bag"></div>
-                                                    Thêm vào giỏ
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="product-block col-product">
-                                    <div class="product-box">
-                                        <div class="product-thumbnail">
-                                            <a href="#" class="product-link">
-                                                <img
-                                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                        alt="">
-                                            </a>
-                                            <a href="#" class="cover">
-                                                <div class="cover-layout">
-
-                                                </div>
-                                                <div class="eye">
-                                                    <div class="fas fa-eye"></div>
-                                                </div>
-
-                                            </a>
-                                        </div>
-                                        <div class="product-infor">
-                                            <span class="product-name">Đi qua hoa cúc</span>
-                                            <div class="price-infor">
-                          <span class="sale-price">
-                            63.00<sup>đ</sup>
-                          </span>
-                                                <span class="price">50.00<sup>đ</sup></span>
-                                            </div>
-                                            <form action="POST" class="add-to-cart">
-                                                <button type="submit">
-                                                    <div class="fa fa-shopping-bag"></div>
-                                                    Thêm vào giỏ
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="product-block col-product">
-                                    <div class="product-box">
-                                        <div class="product-thumbnail">
-                                            <a href="#" class="product-link">
-                                                <img
-                                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                        alt="">
-                                            </a>
-                                            <a href="#" class="cover">
-                                                <div class="cover-layout">
-
-                                                </div>
-                                                <div class="eye">
-                                                    <div class="fas fa-eye"></div>
-                                                </div>
-
-                                            </a>
-                                        </div>
-                                        <div class="product-infor">
-                                            <span class="product-name">Đi qua hoa cúc</span>
-                                            <div class="price-infor">
-                          <span class="sale-price">
-                            63.00<sup>đ</sup>
-                          </span>
-                                                <span class="price">50.00<sup>đ</sup></span>
-                                            </div>
-                                            <form action="POST" class="add-to-cart">
-                                                <button type="submit">
-                                                    <div class="fa fa-shopping-bag"></div>
-                                                    Thêm vào giỏ
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            </c:forEach>
                         </div>
                     </div>
                     <div class="sale-products">
                         <div class="title-box">
-                <span class="category-title">
-                  SẢN PHẨM GIẢM GIÁ
-                </span>
+                        <span class="category-title">
+                          SẢN PHẨM GIẢM GIÁ
+                        </span>
                             <span class="show">
                   Xem tất cả
                   <div class="fas fa-arrow-right"></div>
                 </span>
                         </div>
                         <div class="row g-0">
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="product-block col-product">
-                                    <div class="product-box">
-                                        <div class="product-thumbnail">
-                                            <a href="#" class="product-link">
-                                                <img
-                                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                        alt="">
-                                                </img>
-                                            </a>
-                                            <a href="#" class="cover">
-                                                <div class="cover-layout">
+                            <c:forEach var="i" items="${listSale}">
+                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="product-block col-product">
+                                        <div class="product-box">
+                                            <div class="product-thumbnail">
+                                                <a href="#" class="product-link">
+                                                    <img
+                                                            src="${i.thumbnail}"
+                                                            alt="">
+                                                    </img>
+                                                </a>
+                                                <a href="#" class="cover">
+                                                    <div class="cover-layout">
 
-                                                </div>
-                                                <div class="eye">
-                                                    <div class="fas fa-eye"></div>
-                                                </div>
+                                                    </div>
+                                                    <div class="eye">
+                                                        <div class="fas fa-eye"></div>
+                                                    </div>
 
-                                            </a>
-                                        </div>
-                                        <div class="product-infor">
-                                            <span class="product-name">Đi qua hoa cúc</span>
-                                            <div class="price-infor">
-                          <span class="sale-price">
-                            63.00<sup>đ</sup>
-                          </span>
-                                                <span class="price">50.00<sup>đ</sup></span>
+                                                </a>
                                             </div>
-                                            <form action="POST" class="add-to-cart">
-                                                <button type="submit">
-                                                    <div class="fa fa-shopping-bag"></div>
-                                                    Thêm vào giỏ
-                                                </button>
-                                            </form>
+                                            <div class="product-infor">
+                                                <span class="product-name">${i.title}</span>
+                                                <div class="price-infor">
+                                                    <c:if test="${i.discount > 0}">
+                                                  <span class="sale-price">
+                                                ${i.discount}<sup>đ</sup>
+                                              </span>
+                                                        <span class="price">${i.price}<sup>đ</sup></span>
+                                                    </c:if>
+                                                    <c:if test="${i.discount <= 0}">
+                                                    <span class="sale-price">
+                                                ${i.price}<sup>đ</sup>
+                                              </span>
+
+                                                    </c:if>
+                                                </div>
+                                                <form action="POST" class="add-to-cart">
+                                                    <button type="submit">
+                                                        <div class="fa fa-shopping-bag"></div>
+                                                        Thêm vào giỏ
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="product-block col-product">
-                                    <div class="product-box">
-                                        <div class="product-thumbnail">
-                                            <a href="#" class="product-link">
-                                                <img
-                                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                        alt="">
-                                            </a>
-                                            <a href="#" class="cover">
-                                                <div class="cover-layout">
-
-                                                </div>
-                                                <div class="eye">
-                                                    <div class="fas fa-eye"></div>
-                                                </div>
-
-                                            </a>
-                                        </div>
-                                        <div class="product-infor">
-                                            <span class="product-name">Đi qua hoa cúc</span>
-                                            <div class="price-infor">
-                          <span class="sale-price">
-                            63.00<sup>đ</sup>
-                          </span>
-                                                <span class="price">50.00<sup>đ</sup></span>
-                                            </div>
-                                            <form action="POST" class="add-to-cart">
-                                                <button type="submit">
-                                                    <div class="fa fa-shopping-bag"></div>
-                                                    Thêm vào giỏ
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="product-block col-product">
-                                    <div class="product-box">
-                                        <div class="product-thumbnail">
-                                            <a href="#" class="product-link">
-                                                <img
-                                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                        alt="">
-                                            </a>
-                                            <a href="#" class="cover">
-                                                <div class="cover-layout">
-
-                                                </div>
-                                                <div class="eye">
-                                                    <div class="fas fa-eye"></div>
-                                                </div>
-
-                                            </a>
-                                        </div>
-                                        <div class="product-infor">
-                                            <span class="product-name">Đi qua hoa cúc</span>
-                                            <div class="price-infor">
-                          <span class="sale-price">
-                            63.00<sup>đ</sup>
-                          </span>
-                                                <span class="price">50.00<sup>đ</sup></span>
-                                            </div>
-                                            <form action="POST" class="add-to-cart">
-                                                <button type="submit">
-                                                    <div class="fa fa-shopping-bag"></div>
-                                                    Thêm vào giỏ
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="product-block col-product">
-                                    <div class="product-box">
-                                        <div class="product-thumbnail">
-                                            <a href="#" class="product-link">
-                                                <img
-                                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                        alt="">
-                                            </a>
-                                            <a href="#" class="cover">
-                                                <div class="cover-layout">
-
-                                                </div>
-                                                <div class="eye">
-                                                    <div class="fas fa-eye"></div>
-                                                </div>
-
-                                            </a>
-                                        </div>
-                                        <div class="product-infor">
-                                            <span class="product-name">Đi qua hoa cúc</span>
-                                            <div class="price-infor">
-                          <span class="sale-price">
-                            63.00<sup>đ</sup>
-                          </span>
-                                                <span class="price">50.00<sup>đ</sup></span>
-                                            </div>
-                                            <form action="POST" class="add-to-cart">
-                                                <button type="submit">
-                                                    <div class="fa fa-shopping-bag"></div>
-                                                    Thêm vào giỏ
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="product-block col-product">
-                                    <div class="product-box">
-                                        <div class="product-thumbnail">
-                                            <a href="#" class="product-link">
-                                                <img
-                                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                        alt="">
-                                            </a>
-                                            <a href="#" class="cover">
-                                                <div class="cover-layout">
-
-                                                </div>
-                                                <div class="eye">
-                                                    <div class="fas fa-eye"></div>
-                                                </div>
-
-                                            </a>
-                                        </div>
-                                        <div class="product-infor">
-                                            <span class="product-name">Đi qua hoa cúc</span>
-                                            <div class="price-infor">
-                          <span class="sale-price">
-                            63.00<sup>đ</sup>
-                          </span>
-                                                <span class="price">50.00<sup>đ</sup></span>
-                                            </div>
-                                            <form action="POST" class="add-to-cart">
-                                                <button type="submit">
-                                                    <div class="fa fa-shopping-bag"></div>
-                                                    Thêm vào giỏ
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="product-block col-product">
-                                    <div class="product-box">
-                                        <div class="product-thumbnail">
-                                            <a href="#" class="product-link">
-                                                <img
-                                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                        alt="">
-                                            </a>
-                                            <a href="#" class="cover">
-                                                <div class="cover-layout">
-
-                                                </div>
-                                                <div class="eye">
-                                                    <div class="fas fa-eye"></div>
-                                                </div>
-
-                                            </a>
-                                        </div>
-                                        <div class="product-infor">
-                                            <span class="product-name">Đi qua hoa cúc</span>
-                                            <div class="price-infor">
-                          <span class="sale-price">
-                            63.00<sup>đ</sup>
-                          </span>
-                                                <span class="price">50.00<sup>đ</sup></span>
-                                            </div>
-                                            <form action="POST" class="add-to-cart">
-                                                <button type="submit">
-                                                    <div class="fa fa-shopping-bag"></div>
-                                                    Thêm vào giỏ
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="product-block col-product">
-                                    <div class="product-box">
-                                        <div class="product-thumbnail">
-                                            <a href="#" class="product-link">
-                                                <img
-                                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                        alt="">
-                                            </a>
-                                            <a href="#" class="cover">
-                                                <div class="cover-layout">
-
-                                                </div>
-                                                <div class="eye">
-                                                    <div class="fas fa-eye"></div>
-                                                </div>
-
-                                            </a>
-                                        </div>
-                                        <div class="product-infor">
-                                            <span class="product-name">Đi qua hoa cúc</span>
-                                            <div class="price-infor">
-                          <span class="sale-price">
-                            63.00<sup>đ</sup>
-                          </span>
-                                                <span class="price">50.00<sup>đ</sup></span>
-                                            </div>
-                                            <form action="POST" class="add-to-cart">
-                                                <button type="submit">
-                                                    <div class="fa fa-shopping-bag"></div>
-                                                    Thêm vào giỏ
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="product-block col-product">
-                                    <div class="product-box">
-                                        <div class="product-thumbnail">
-                                            <a href="#" class="product-link">
-                                                <img
-                                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/products/di-qua-hoa-cuc-tai-ban--1-.jpg?v=1453198485223"
-                                                        alt="">
-                                            </a>
-                                            <a href="#" class="cover">
-                                                <div class="cover-layout">
-
-                                                </div>
-                                                <div class="eye">
-                                                    <div class="fas fa-eye"></div>
-                                                </div>
-
-                                            </a>
-                                        </div>
-                                        <div class="product-infor">
-                                            <span class="product-name">Đi qua hoa cúc</span>
-                                            <div class="price-infor">
-                          <span class="sale-price">
-                            63.00<sup>đ</sup>
-                          </span>
-                                                <span class="price">50.00<sup>đ</sup></span>
-                                            </div>
-                                            <form action="POST" class="add-to-cart">
-                                                <button type="submit">
-                                                    <div class="fa fa-shopping-bag"></div>
-                                                    Thêm vào giỏ
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </c:forEach>
                         </div>
                     </div>
 
@@ -895,6 +622,26 @@
         </div>
     </div>
 </footer>
+<script>
+    function increaseValue() {
+        var value = parseInt(document.getElementById('number').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        document.getElementById('number').value = value;
+    }
+
+    function decreaseValue() {
+        var value = parseInt(document.getElementById('number').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value < 1 ? value = 1 : '';
+        value--;
+        document.getElementById('number').value = value;
+    }
+</script>
+<script>
+
+
+</script>
 <%--<script type="text/javascript" src="assets/js/jquery-3.7.0.min.js"></script>--%>
 <script type="text/javascript" src="<c:url value="/template/web/assets/js/jquery-3.7.0.min.js"/>"></script>
 <%--<script type="text/javascript" src="bootstrap/bootstrap-5.0.2-dist/js/bootstrap.js">--%>

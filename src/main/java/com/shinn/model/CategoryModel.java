@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @Data
 public class CategoryModel extends AbstractModel{
     private String categoryName;
+    private String categoryCode;
 }

@@ -19,7 +19,7 @@
     list-style:none;
 }
 .nav_link {
-   
+
     display: block;
     padding: 10px 0;
     border-bottom: 1px solid rgb(236, 236, 236);
@@ -89,7 +89,7 @@ span {
     padding: 5px 0;
 }
 .infor .status {
-    color: var(--orange-color);    
+    color: var(--orange-color);
 }
 .infor .category {
     color: var(--orange-color);
@@ -106,9 +106,9 @@ span {
     margin: 0 auto;
     text-align: left;
     padding-top: 20px;
-  }
-  
-  .amount-form .value-button {
+}
+
+.amount-form .value-button {
     color: var(--font-color);
     display: inline-block;
     border: 1px solid #ddd;
@@ -125,28 +125,28 @@ span {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-  
-  .amount-form .value-button:hover {
+}
+
+.amount-form .value-button:hover {
     cursor: pointer;
-  }
-  
-  .amount-form #decrease {
+}
+
+.amount-form #decrease {
     margin-right: -4px;
     border-radius: 8px 0 0 8px;
-  }
-  
-  .amount-form #increase {
+}
+
+.amount-form #increase {
     margin-left: -4px;
     border-radius: 0 8px 8px 0;
-  }
-  
-  .amount-form #input-wrap {
+}
+
+.amount-form #input-wrap {
     margin: 0px;
     padding: 0px;
-  }
-  
-  .amount-form input#number {
+}
+
+.amount-form input#number {
     text-align: center;
     border: none;
     border-top: 1px solid #ddd;
@@ -154,42 +154,46 @@ span {
     margin: 0px;
     width: 40px;
     height: 40px;
-  }
-  
-  .amount-form input[type=number]::-webkit-inner-spin-button,
-  .amount-form input[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-  }
-  .title {
+}
+
+.amount-form input[type=number]::-webkit-inner-spin-button,
+.amount-form input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+
+.title {
     font-size: 1.4rem;
     font-weight: bold;
     padding: 0 0 10px 0;
-  }
-  .title:hover {
+}
+.title:hover {
     color: var(--orange-color);
-  }
-  .small-product img {
+}
+.small-product img {
     width: 100%;
     height: auto;
-  }
-  .product-name__small {
+}
+.product-name__small {
     color: var(--font-color);
     font-size: 1.2rem;
     font-weight: 500;
     position: relative;
     top: 0;
-  }
-  .small-product {
+}
+.small-product {
     padding: 10px 0;
-  }
-  .small-product a {
+}
+.small-product a {
     text-decoration: none;
-  }
-  .related-product {
+}
+.related-product {
     padding-top: 20px;
-  }
-  .amount-form button {
+}
+.amount-form button {
     padding: 10px 20px;
     color: white;
     background-color: var(--orange-color);
@@ -198,12 +202,12 @@ span {
     cursor: pointer;
     margin-left: 20px;
 }
-  .amount-form button:hover {
+.amount-form button:hover {
     color: var(--orange-color);
     background-color: white;
-  }
-  .infor {
+}
+.infor {
     margin-bottom: 20px;
-  }
+}
 
 

@@ -6,6 +6,17 @@
     <display-name>BookStore</display-name>
 
 
+
+
+
+    <filter>
+        <filter-name>author</filter-name>
+        <filter-class>com.shinn.filter.AuthorizationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>author</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
@@ -27,4 +38,5 @@
 <!--        <servlet-name>Jersey REST Service</servlet-name>-->
 <!--        <url-pattern>/rest/*</url-pattern>-->
 <!--    </servlet-mapping>-->
+
 </web-app>

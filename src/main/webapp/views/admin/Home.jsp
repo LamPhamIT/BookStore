@@ -5,6 +5,7 @@
   Time: 12:29
   To change this template use File | Settings | File Templates.
 --%>
+<%@ include file="/common/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,14 +21,15 @@
     <title>Manager</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<%--    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
+    <link rel="stylesheet" href="<c:url value="/template/admin/vendor/fontawesome-free/css/all.min.css"/>">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+<%--    <link href="css/sb-admin-2.min.css" rel="stylesheet">--%>
+    <link rel="stylesheet" href="<c:url value="/template/admin/css/sb-admin-2.css"/>">
 </head>
 
 <body id="page-top">
@@ -81,7 +83,7 @@
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="BookManage.html">
+            <a class="nav-link" href="<c:url value="/admin-quan-ly-sach?page=1&maxPageItem=3&sortBy=Product_ID&sortName=asc"/>">
                 <i class="fas fa-book"></i>
                 <span>Quản lý sách</span>
             </a>
@@ -305,11 +307,13 @@
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle"
-                                 src="img/undraw_profile.svg">
-                        </a>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><c:if test="${not empty User}">
+                                ${User.firstName}
+                            </c:if></span>
+                        <img class="img-profile rounded-circle"
+                             src="https://i.pinimg.com/custom_covers/222x/734790564142559148_1588646204.jpg">
+                    </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                              aria-labelledby="userDropdown">
@@ -714,22 +718,24 @@
 </div>
 
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+<%--<script src="vendor/jquery/jquery.min.js"></script>--%>
+<script src="<c:url value="/template/admin/vendor/jquery/jquery.min.js"/>"></script>
+<%--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
+<script src="<c:url value="/template/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
+<%--<script src="vendor/jquery-easing/jquery.easing.min.js"></script>--%>
+<script src="<c:url value="/template/admin/vendor/jquery-easing/jquery.easing.min.js"/>"></script>
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
+<%--<script src="js/sb-admin-2.min.js"></script>--%>
+<script src="<c:url value="/template/admin/js/sb-admin-2.min.js"/>"></script>
 <!-- Page level plugins -->
-<script src="vendor/chart.js/Chart.min.js"></script>
-
+<%--<script src="vendor/chart.js/Chart.min.js"></script>--%>
+<script src="<c:url value="/template/admin/vendor/chart.js/Chart.min.js"/>"></script>
 <!-- Page level custom scripts -->
-<script src="js/demo/chart-area-demo.js"></script>
-<script src="js/demo/chart-pie-demo.js"></script>
-
+<%--<script src="js/demo/chart-area-demo.js"></script>--%>
+<script src="<c:url value="/template/admin/js/demo/chart-area-demo.js"/>"></script>
+<%--<script src="js/demo/chart-pie-demo.js"></script>--%>
+<script src="<c:url value="/template/admin/js/demo/chart-pie-demo.js"/>"></script>
 </body>
 
 </html>

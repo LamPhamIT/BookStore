@@ -5,7 +5,7 @@
   Time: 12:30
   To change this template use File | Settings | File Templates.
 --%>
-<%@ include file="/common/taglib.jsp"%>
+<%@ include file="/common/taglib.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,22 +21,36 @@
     <title>SB Admin 2 - Tables</title>
 
     <!-- Custom fonts for this template -->
-<%--    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
+    <%--    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
     <link rel="stylesheet" href="<c:url value="/template/admin/vendor/fontawesome-free/css/all.min.css"/>">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom styles for this template -->
-<%--    <link href="css/sb-admin-2.css" rel="stylesheet">--%>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <%--    <link href="css/sb-admin-2.dcss" rel="stylesheet">--%>
     <link rel="stylesheet" href="<c:url value="/template/admin/css/sb-admin-2.css"/>">
     <!-- Custom styles for this page -->
-<%--    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">--%>
+    <%--    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="<c:url value="/template/admin/vendor/datatables/dataTables.bootstrap4.min.css"/>">
-</head>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+            integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="<c:url value="/template/admin/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
+    <script src="<c:url value="/template/paging/jquery.twbsPagination.min.js"/>"></script>
+    <style>
+        select {
+            padding: 5px 20px;
+            outline: none;
 
+        }
+
+    </style>
+</head>
 <body id="page-top">
+
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -46,7 +60,8 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center"
+           href="<c:url value="/admin-trang-chu"/>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -68,27 +83,27 @@
 
         <!-- Heading -->
         <!-- <div class="sidebar-heading">
-           Interface
-       </div> -->
+            Interface
+        </div> -->
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="UserManage.html">
+            <a class="nav-link" href="Us">
                 <i class="fas fa-user"></i>
                 <span>Quản lý tài khoản</span>
             </a>
             <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-               <div class="bg-white py-2 collapse-inner rounded">
-                   <h6 class="collapse-header">Custom Components:</h6>
-                   <a class="collapse-item" href="buttons.html">Buttons</a>
-                   <a class="collapse-item" href="cards.html">Cards</a>
-               </div>
-           </div> -->
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Components:</h6>
+                    <a class="collapse-item" href="buttons.html">Buttons</a>
+                    <a class="collapse-item" href="cards.html">Cards</a>
+                </div>
+            </div> -->
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="BookManage.html">
+            <a class="nav-link" href="<c:url value="/admin-quan-ly-sach?page=1&maxPageItem=3&sortBy=Product_ID&sortName=asc"/>">
                 <i class="fas fa-book"></i>
                 <span>Quản lý sách</span>
             </a>
@@ -105,17 +120,17 @@
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="">
+            <a class="nav-link" href="charts.html">
                 <i class="fas fa-money-bill-alt"></i>
                 <span>Thống kê doanh thu</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
         <!-- <li class="nav-item">
-           <a class="nav-link" href="tables.html">
-               <i class="fas fa-fw fa-table"></i>
-               <span>Tables</span></a>
-       </li> -->
+            <a class="nav-link" href="tables.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Tables</span></a>
+        </li> -->
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -126,11 +141,11 @@
         </div>
 
         <!-- Sidebar Message
-       <div class="sidebar-card d-none d-lg-flex">
-           <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-           <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-           <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-       </div> -->
+        <div class="sidebar-card d-none d-lg-flex">
+            <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+            <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+        </div> -->
 
     </ul>
     <!-- End of Sidebar -->
@@ -149,7 +164,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <!-- Topbar Search -->
+<%--                <!-- Topbar Search -->--%>
                 <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
@@ -163,7 +178,7 @@
                     </div>
                 </form>
 
-                <!-- Topbar Navbar -->
+<%--                <!-- Topbar Navbar -->--%>
                 <ul class="navbar-nav ml-auto">
 
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -257,34 +272,41 @@
                             </h6>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
+                                    <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                                         alt="...">
                                     <div class="status-indicator bg-success"></div>
                                 </div>
                                 <div class="font-weight-bold">
                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                        problem I've been having.</div>
+                                        problem I've been having.
+                                    </div>
                                     <div class="small text-gray-500">Emily Fowler · 58m</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
+                                    <img class="rounded-circle" src="img/undraw_profile_2.svg"
+                                         alt="...">
                                     <div class="status-indicator"></div>
                                 </div>
                                 <div>
                                     <div class="text-truncate">I have the photos that you ordered last month, how
-                                        would you like them sent to you?</div>
+                                        would you like them sent to you?
+                                    </div>
                                     <div class="small text-gray-500">Jae Chun · 1d</div>
                                 </div>
                             </a>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
+                                    <img class="rounded-circle" src="img/undraw_profile_3.svg"
+                                         alt="...">
                                     <div class="status-indicator bg-warning"></div>
                                 </div>
+
                                 <div>
                                     <div class="text-truncate">Last month's report looks great, I am very happy with
-                                        the progress so far, keep up the good work!</div>
+                                        the progress so far, keep up the good work!
+                                    </div>
                                     <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                 </div>
                             </a>
@@ -296,7 +318,8 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                        told me that people say this to all dogs, even if they aren't good...</div>
+                                        told me that people say this to all dogs, even if they aren't good...
+                                    </div>
                                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                 </div>
                             </a>
@@ -310,8 +333,11 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><c:if test="${not empty User}">
+                                ${User.firstName}
+                            </c:if></span>
+                            <img class="img-profile rounded-circle"
+                                 src="https://i.pinimg.com/custom_covers/222x/734790564142559148_1588646204.jpg">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -339,82 +365,137 @@
                 </ul>
 
             </nav>
-            <!-- End of Topbar -->
-            <!-- Begin Page Content -->
+<%--            <!-- End of Topbar -->--%>
+<%--            <!-- Begin Page Content -->--%>
             <div class="container-fluid">
-
-                <!-- Page Heading -->
+<%--                Hello--%>
+<%--                <!-- Page Heading -->--%>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <span>Quản lý User</span>
-                        <div class="text-right">
-                            <a flag="info" class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-                               data-toggle="tooltip" title='Thêm san pham' href='#'>
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                <div class="text-right">
+                                    <form id="formSubmit" method="GET" action="<c:url value="/admin-quan-ly-sach"/> " style="padding-left: 100px">
+                                        <input type="hidden" value="" id="page" name="page"/>
+                                        <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
+                                        <span>Sắp xếp</span>
+                                        <select name="sortBy" id="sortBy" class="sort" onclick="sortTable()">
+                                            <option value="Product_ID" select="selected">ID</option>
+                                            <option value="title">Title</option>
+                                            <option value="price">Price</option>
+                                            <option value="remain_quality">Quantity</option>
+                                            <option value="discount">Discount</option>
+                                        </select>
+                                        <span>Chiều</span>
+                                        <select name="sortName" id="sortName" class="sort" onclick="sortTable()">
+                                            <option value="asc" select="selected">Asc</option>
+                                            <option value="desc">Desc</option>
+                                        </select>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                                <div class="text-right">
+                                <form action="<c:url value="/admin-export-file"/>" method="POST" id="exportForm">
+                                    <%--                                        <input type="hidden" value="" name="page">--%>
+                                    <%--                                        <input type="hidden" value="" name="maxPageItem">--%>
+                                    <input type="hidden" value="" name="sortBy" id="hiddenSortBy">
+                                    <input type="hidden" value="" name="sortName" id="hiddenSortName">
+                                    <input type="input" placeholder="Choose path to save" style="margin-left: 20px; outline:none;" name="filePath">
+                                </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <div class="text-right">
+                                    <button class="btn btn-success" id="export-file">Export Excel file</button>
+                                </div>
+                            </div>
+                            <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                                <div class="text-right">
+                                    <a flag="info" class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
+                                       data-toggle="tooltip" title='Thêm san pham'
+                                       href='<c:url value="/admin-quan-ly-sach?action=addnew"/>'>
                                     <span>
                                         <i class="fa fa-plus-circle bigger-110 purple"></i>
                                     </span>
-                            </a>
-                            <button id="btnDelete" type="button"
-                                    class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-                                    data-toggle="tooltip" title='Xóa san pham'>
+                                    </a>
+                                    <button id="btnDelete" type="button"
+                                            class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
+                                            data-toggle="tooltip" title='Xóa san pham'>
                                     <span>
                                         <i class="fa-solid fa-trash"></i>
                                     </span>
-                            </button>
-                        </div>
-                        <!-- <form action="GET" class="form-input">
-                            <span>Title:</span>
-                            <input type="text">
-                            <span>Thumbnail: </span>
-                            <input type="text">
-                            <span>Description</span>
+                                    </button>
+                                </div>
+                            </div>
 
-                        </form> -->
+                        </div>
                     </div>
                 </div>
-                <!-- <input type="file"> -->
-                <!-- DataTales Example -->
+<%--                <!-- DataTales Example -->--%>
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary"></h6>
-                    </div>
+<%--                    <div class="card-header py-3">--%>
+<%--                        <h6 class="m-0 font-weight-bold text-primary"></h6>--%>
+<%--                    </div>--%>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>User ID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Phone number</th>
-                                    <th>Role</th>
+                                    <th><input type="checkbox" id="check-all">All</th>
+                                    <th>Product ID</th>
+                                    <th>Title</th>
+                                    <th>Thumbnail</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Discount</th>
+                                    <th>Quantity</th>
+                                    <th>Category</th>
                                     <!-- <th>Salary</th> -->
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Lam</td>
-                                    <td>Pham</td>
-                                    <td>Lamtkhtk2004@gmail.com</td>
-                                    <td>0385979034</td>
-                                    <td>Admin</td>
-                                    <td><a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                           title="Cập san pham" href='#'><i class="fa-solid fa-pencil"></i>
-                                    </a></td>
-                                </tr>
+
+                                <c:forEach var="i" items="${listProduct}">
+                                    <tr>
+                                        <td><input type="checkbox" class="check-input" name="${i.id}" value="${i.id}">
+                                        </td>
+                                        <td class="Product_ID">${i.id}</td>
+                                        <td class="title">${i.title}</td>
+                                        <td><img src="${i.thumbnail}" alt=""></td>
+                                        <td>${i.description}</td>
+                                        <td class="price">${i.price}</td>
+                                        <td class="discount">${i.discount}</td>
+                                        <td class="remain_quality">${i.remainQuality}</td>
+                                        <td>${i.category.categoryName}</td>
+                                        <td>
+                                            <c:url var="editURL" value="/admin-quan-ly-sach">
+                                                <c:param name="action" value="edit"/>
+                                                <c:param name="id" value="${i.id}"/>
+                                            </c:url>
+                                            <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
+                                               title="Cập nhật sản phẩm" href='${editURL}'>
+                                                <i class="fa-solid fa-pencil"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+    <div class="text-center" style="margin: 0 auto">
+        <ul class="pagination" id="pagination"></ul>
+    </div>
 
             </div>
-            <!-- /.container-fluid -->
 
+<%--            <!-- /.container-fluid -->--%>
         </div>
-        <!-- End of Main Content -->
+
+<%--        <!-- End of Main Content -->--%>
 
         <!-- Footer -->
         <!-- <footer class="sticky-footer bg-white">
@@ -428,54 +509,171 @@
 
     </div>
     <!-- End of Content Wrapper -->
-
 </div>
 <!-- End of Page Wrapper -->
+
+
 
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
 
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
+<%--<!-- Logout Modal-->--%>
+<%--<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"--%>
+<%--     aria-hidden="true">--%>
+<%--    <div class="modal-dialog" role="document">--%>
+<%--        <div class="modal-content">--%>
+<%--            <div class="modal-header">--%>
+<%--                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>--%>
+<%--                <button class="close" type="button" data-dismiss="modal" aria-label="Close">--%>
+<%--                    <span aria-hidden="true">×</span>--%>
+<%--                </button>--%>
+<%--            </div>--%>
+<%--            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>--%>
+<%--            <div class="modal-footer">--%>
+<%--                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>--%>
+<%--                <a class="btn btn-primary" href="login.html">Logout</a>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
 <!-- Bootstrap core JavaScript-->
-<%--<script src="vendor/jquery/jquery.min.js"></script>--%>
-<script src="<c:url value="/template/admin/vendor/jquery/jquery.min.js"/>"></script>
-<%--<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>--%>
+
+
+<%--<script src="<c:url value="/template/admin/vendor/jquery/jquery.min.js"/>"></script>--%>
+
 <script src="<c:url value="/template/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
 <!-- Core plugin JavaScript-->
-<%--<script src="vendor/jquery-easing/jquery.easing.min.js"></script>--%>
+
 <script src="<c:url value="/template/admin/vendor/jquery-easing/jquery.easing.min.js"/>"></script>
 <!-- Custom scripts for all pages-->
-<%--<script src="js/sb-admin-2.min.js"></script>--%>
+
 <script src="<c:url value="/template/admin/js/sb-admin-2.min.js"/>"></script>
 <!-- Page level plugins -->
-<%--<script src="vendor/datatables/jquery.dataTables.min.js"></script>--%>
+
 <script src="<c:url value="/template/admin/vendor/datatables/jquery.dataTables.min.js"/>"></script>
-<%--<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>--%>
+
 <script src="<c:url value="/template/admin/vendor/datatables/dataTables.bootstrap4.min.js"/>"></script>
 <!-- Page level custom scripts -->
-<%--<script src="js/demo/datatables-demo.js"></script>--%>
+
 <script src="<c:url value="/template/admin/js/demo/datatables-demo.js"/>"></script>
+<script>
+    $('#export-file').click(function () {
+
+        let sortBy = $('#sortBy').val();
+        let sortName = $('#sortName').val();
+
+       $('#hiddenSortBy').val(sortBy);
+       $('#hiddenSortName').val(sortName);
+       $('#exportForm').submit();
+    });
+</script>
+<script>
+    function sortTable() {
+        let table = $('#dataTable');
+        let tbody = table.find('tbody');
+        let sortBy = $('#sortBy').val();
+        let sortName =$('#sortName').val();
+        let rows = tbody.find('tr').get();
+
+        rows.sort(function(a, b) {
+            var cellA = $(a).find("td." + sortBy).text();
+            var cellB = $(b).find("td." + sortBy).text();
+
+          if(sortName== 'asc') {
+              return cellA.localeCompare(cellB, "en", { numeric: true });
+          } else {
+              return cellB.localeCompare(cellA, "en", { numeric: true });
+          }
+        });;
+        $.each(rows, function(index, row) {
+            tbody.append(row);
+        });
+    }
+</script>
+<script>
+    let totalPages= ${paging.totalPage};
+    let currentPage = ${paging.page};
+    let limit = 3;
+    $(function () {
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: totalPages,
+            visiblePages: 5,
+            startPage: currentPage,
+            onPageClick: function (event, page) {
+
+                // event.preventDefault();
+                // let sortBy = $('#sortBy').val();
+                // let sortName = $('#sortName').val();
+                // let url = "admin-quan-ly-sach?page="+page+"&maxPageItem=" +limit + "&sortBy="+sortBy + "&sortName="+sortName+"";
+                if(currentPage != page) {
+                    $('#maxPageItem').val(limit);
+                    $('#page').val(page);
+                    $('#formSubmit').submit();
+                }
+
+
+                // $.ajax({
+                //     url: url,
+                //     type: "GET",
+                //     success: function (response) {
+                //         $('#dataTable').load(url);
+                //     },
+                //     fail: function (error) {
+                //         alert('Load fail');
+                //     }
+                // });
+                // $.get(url, function (response) {
+                //     $('html').html(response);
+                // });
+            }
+        });
+    });
+</script>
+<script>
+    $('#check-all').click(function () {
+
+        let isChecked = $(this).prop('checked');
+        $('.check-input').prop('checked', isChecked);
+    });
+
+    $('#btnDelete').click(function () {
+        let listInput = document.querySelectorAll('.check-input');
+        let ids = [];
+        listInput.forEach(function (checkboxInput) {
+            if (checkboxInput.checked) {
+                ids.push(checkboxInput.value);
+            }
+        });
+
+
+        deleteProduct(ids);
+
+        function deleteProduct(ids) {
+            $.ajax({
+                url: "api/v1/books",
+                type: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify({'ids': ids}),
+                dataType: 'json',
+                success: function (result) {
+                    alert('Delete book success');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 3000);
+                },
+                fail: function (error) {
+                    alert('Delete book fail');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 3000);
+                }
+            });
+        }
+    });
+</script>
 </body>
 
 </html>

@@ -15,5 +15,5 @@ public class ProductModel extends AbstractModel{
     private Long discount;
     private int remainQuality;
     private CategoryModel category;
-
+    private String categoryCode;
 }

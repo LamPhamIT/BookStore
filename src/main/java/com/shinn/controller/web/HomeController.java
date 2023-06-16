@@ -2,7 +2,11 @@ package com.shinn.controller.web;
 
 import com.shinn.constant.SystemConstant;
 import com.shinn.model.UserModel;
+import com.shinn.services.IService.ICategoryService;
+import com.shinn.services.IService.IProductService;
 import com.shinn.services.IService.IUserService;
+import com.shinn.services.impl.CategoryService;
+import com.shinn.services.impl.ProductService;
 import com.shinn.services.impl.UserService;
 import com.shinn.utils.FormUtil;
 import com.shinn.utils.SessionUtil;
@@ -20,9 +24,13 @@ import java.util.ResourceBundle;
 @WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/dang-ky"})
 public class HomeController extends HttpServlet {
     private IUserService userService;
+    private IProductService productService;
+    private ICategoryService categoryService;
 
     public HomeController() {
         userService = new UserService();
+        productService = new ProductService();
+        categoryService = new CategoryService();
     }
 
     ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
@@ -53,6 +61,9 @@ public class HomeController extends HttpServlet {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/web/Signup.jsp");
             requestDispatcher.forward(req, resp);
         } else {
+            req.setAttribute("listCategory", categoryService.findAll());
+            req.setAttribute("listLatest", productService.findLatestProducts(4));
+            req.setAttribute("listSale", productService.findSaleProducts(8));
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/web/Home.jsp");
             requestDispatcher.forward(req, resp);
         }
@@ -69,8 +80,10 @@ public class HomeController extends HttpServlet {
                 if (user.getRole().getName().equals(SystemConstant.USER_ROLE)) {
                     resp.sendRedirect(req.getContextPath() + "/trang-chu");
                 } else if (user.getRole().getName().equals(SystemConstant.ADMIN_ROLE)) {
-                    resp.sendRedirect(req.getContextPath() + "/dang-nhap?action=login");
+//                    resp.sendRedirect(req.getContextPath() + "/dang-nhap?action=login");
+                    resp.sendRedirect(req.getContextPath() + "/admin-trang-chu");
                 }
+
             } else {
                 resp.sendRedirect(req.getContextPath() + "/dang-nhap?action=login&message=username_password_unvalid&alert=danger");
             }
