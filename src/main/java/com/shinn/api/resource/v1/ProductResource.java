@@ -23,7 +23,7 @@ public class ProductResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProductModel> getAll(@QueryParam("page") Integer page, @QueryParam("maxPageItem") Integer maxPageItem,
-                                     @QueryParam("SortBy") String sortBy, @QueryParam("sortName") String sortName) {
+                                     @QueryParam("SortBy") String sortBy, @QueryParam("sortName") String sortName, @QueryParam("productId") Long productId) {
         Pageble pageRequest = new PageRequest(page, maxPageItem, new Sorter(sortBy, sortName));
         List<ProductModel> list = productService.findAll(pageRequest);
         return list;

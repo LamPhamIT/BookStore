@@ -9,4 +9,6 @@ public interface ICartDAO {
     public Long insert(CartModel cartModel);
     public List<CartModel> findAll();
     public CartModel findByCartId(Long cartId);
+    public void update(CartModel cartModel);
+    public void delete(Long cartId);
 }

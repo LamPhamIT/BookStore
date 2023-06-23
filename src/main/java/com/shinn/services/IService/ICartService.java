@@ -9,4 +9,7 @@ public interface ICartService {
     public List<CartModel> findAll();
     public Long insert(CartModel cartModel);
     public CartModel findByCartId(Long cartId);
+    public List<CartModel> getProduct(List<CartModel> cartModels);
+    public CartModel update(CartModel cartModel);
+    public void delete(CartModel cartModel);
 }
