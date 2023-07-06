@@ -19,4 +19,5 @@ public interface IProductDAO {
 
     public List<ProductModel> findByCategoryID(Long categoryId);
     public List<ProductModel> find(String filter);
+    public List<ProductModel> findByKeyword(String keyword);
 }

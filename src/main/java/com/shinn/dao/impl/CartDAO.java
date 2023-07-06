@@ -43,4 +43,10 @@ public class CartDAO extends AbstractDAO<CartModel> implements ICartDAO {
         String sql = "DELETE FROM Cart WHERE Cart_ID=?";
         update(sql, cartId);
     }
+
+    @Override
+    public void deleteByUserID(Long userId) {
+        String sql = "DELETE FROM Cart WHERE User_ID=?";
+        update(sql, userId);
+    }
 }

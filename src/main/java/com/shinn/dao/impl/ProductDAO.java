@@ -81,4 +81,10 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
         String sql = "SELECT * FROM Product WHERE title LIKE '?' ";
         return query(sql, new ProductMapper(),query);
     }
+
+    @Override
+    public List<ProductModel> findByKeyword(String keyword) {
+        String sql = "SELECT * FROM Product as p INNER JOIN Category as c ON p.Category_ID=c.Category_ID WHERE Title LIKE '%" + keyword + "%' OR Description LIKE '%" + keyword + "%'";
+        return query(sql, new ProductMapper());
+    }
 }

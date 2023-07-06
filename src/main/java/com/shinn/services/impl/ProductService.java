@@ -78,4 +78,9 @@ public class ProductService implements IProductService {
         CategoryModel categoryModel = categoryDAO.findByCategoryCode(categoryCode);
         return productDAO.findByCategoryID(categoryModel.getId());
     }
+
+    @Override
+    public List<ProductModel> findByKeyWord(String keyword) {
+        return productDAO.findByKeyword(keyword);
+    }
 }

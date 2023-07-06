@@ -13,7 +13,7 @@
 }
 .aside {
     /* padding: 20px 0px; */
-    
+
 }
 .aside h3 {
     color: gray;
@@ -25,7 +25,7 @@
     list-style:none;
 }
 .nav_link {
-   
+
     display: block;
     padding: 10px 0;
     border-bottom: 1px solid rgb(236, 236, 236);
@@ -106,9 +106,9 @@
     color: var(--font-color);
 }
 .blog img {
-   position: relative;
-   left: 50%;
-   transform: translateX(-50%);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .user-image {
     width: 50px;
@@ -166,7 +166,7 @@
 .form-comment button:hover {
     color: var(--orange-color);
     background-color: white;
-    
+
 }
 .blogs-wrapper {
     /* text-align: center; */
@@ -175,7 +175,7 @@
 .blogs-wrapper>.row>span{
     color: var(--font-color);
     font-size: 1.8rem;
-    padding: 10px 10px;    
+    padding: 10px 10px;
 
 }
 .summary-blog {
@@ -215,4 +215,70 @@
     height: auto;
 }
 
+.news-blog {
+    /* display: inline-block; */
+    /* float: right; */
+    /* background-color: red; */
+    text-align: right;
+}
+.news-blog a{
+    padding: 12px 20px;
+    background-color: var(--orange-primary-color);
+    color: white;
+    text-decoration: none;
+    /* margin-bottom: 100px; */
+    display: inline-block;
+    /* margin-top: -1000px; */
+    position: relative;
+    top: -100%;
+}
+.news-blog a:hover {
+    color: white;
 
+}
+
+
+.blog-form {
+    width: 70%;
+    margin: 0 auto;
+
+}
+.blog-form label, input{
+    color: var(--black-color);
+
+}
+.blog-form label {
+    width: 15%;
+    font-size: 1.2rem;
+}
+.blog-form input {
+    width: 80%;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    border: 1px solid gray;
+}
+.blog-form input:focus {
+
+}
+.blog-form button {
+    padding: 8px 20px;
+    background-color: var(--orange-color);
+    border: none;
+    /* margin: 0 auto; */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.modify-btn {
+    display: inline-block !important;
+    padding: 10px 10px;
+    background-color: var(--orange-color);
+    color: white;
+    border-radius: 0 !important;
+}
+.delete-btn {
+    display: inline-block !important;
+    background-color: black;
+    color: white;
+    border-radius: 0 !important;
+}

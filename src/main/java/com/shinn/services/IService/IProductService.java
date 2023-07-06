@@ -15,4 +15,5 @@ public interface IProductService {
     public int getTotalItem();
     public List<ProductModel> findLatestProducts(int amount);
     public List<ProductModel> findSaleProducts(int amount);
+    public List<ProductModel> findByKeyWord(String keyword);
 }

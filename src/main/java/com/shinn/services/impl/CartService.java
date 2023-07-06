@@ -39,7 +39,7 @@ public class CartService implements ICartService {
         for (CartModel cart : listCart) {
             if (cart.getProduct().getId() == cartModel.getProduct().getId()) {
                 cartModel.setId(cart.getId());
-                cartModel.setNum(cart.getNum() + 1);
+                cartModel.setNum(cart.getNum() + cartModel.getNum());
                 check = true;
                 break;
             }
@@ -75,5 +75,10 @@ public class CartService implements ICartService {
         for(int i = 0; i < cartModel.getIds().length;i++) {
             cartDAO.delete(cartModel.getIds()[i]);
         }
+    }
+
+    @Override
+    public void deleteByUserID(Long id) {
+        deleteByUserID(id);
     }
 }

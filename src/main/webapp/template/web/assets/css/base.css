@@ -289,7 +289,27 @@ header {
     -webkit-appearance: none;
     margin: 0;
 }
-
+.amount-input {
+    display: inline-block;
+    border: 1px solid rgb(221, 221, 221);
+}
+.amount-input div {
+    font-size: 1.6rem;
+    color: black;
+    display: inline-block;
+    padding: 5px 16px;
+    background-color: rgb(221, 221, 221);
+    cursor: pointer;
+}
+.amount-input input {
+    color: black;
+    width: 40px;
+    height: 40px;
+    border: 0px;
+    padding-left: 10px;
+    text-align: center;
+    align-items: center;
+}
 .quickview-form input#number {
     /* padding: 20px; */
     /* margin-top: 1px; */
@@ -541,6 +561,7 @@ nav {
     position: absolute;
     left: 0px;
     top: 100%;
+    z-index: 10;
 }
 
 .sub-menu li {
@@ -711,11 +732,11 @@ nav {
 .product-name {
     display: block;
     width: 100%;
-    text-align: center;
-
     padding-top: 10px;
     font-size: 1.2rem;
     font-weight: bold;
+    align-items: center;
+    text-align: center;
 }
 
 .price-infor {
@@ -945,6 +966,10 @@ nav {
 }
 .display-block {
     display: block;
+    opacity: 1;
+    visibility: visible;
+}
+.display-not-block {
     opacity: 1;
     visibility: visible;
 }

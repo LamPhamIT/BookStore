@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class AuthorizationFilter implements Filter {
     private ServletContext servletContext;
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         this.servletContext = filterConfig.getServletContext();
@@ -19,19 +20,25 @@ public class AuthorizationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response =(HttpServletResponse) servletResponse;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
         StringBuffer buffer = request.getRequestURL();
         String url = buffer.toString();
-        if(url.contains("/admin")) {
-            UserModel user = (UserModel) SessionUtil.getInstance().getValue(request ,SystemConstant.USER);
-            if(user != null) {
-                if(user.getRole().getName().equals(SystemConstant.USER_ROLE)) {
+        UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, SystemConstant.USER);
+        if (url.contains("/admin")) {
+            user = (UserModel) SessionUtil.getInstance().getValue(request, SystemConstant.USER);
+            if (user != null) {
+                if (user.getRole().getName().equals(SystemConstant.USER_ROLE)) {
                     response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=not_permission&alert=danger");
-                } else if(user.getRole().getName().equals(SystemConstant.ADMIN_ROLE)) {
+                } else if (user.getRole().getName().equals(SystemConstant.ADMIN_ROLE)) {
                     filterChain.doFilter(servletRequest, servletResponse);
                 }
             } else {
-                response.sendRedirect(request.getContextPath() +"/dang-nhap?action=login&message=not_login&alert=danger");
+                response.sendRedirect(request.getContextPath() + "/dang-nhap?action=login&message=not_login&alert=danger");
+            }
+        } else if (url.contains("/tai-khoan")) {
+            if(user == null) {
+                response.sendRedirect(request.getContextPath()+"/dang-nhap?action=login&message=not_login&alert=danger");
+            } else {filterChain.doFilter(servletRequest, servletResponse);
             }
         } else {
             filterChain.doFilter(servletRequest, servletResponse);

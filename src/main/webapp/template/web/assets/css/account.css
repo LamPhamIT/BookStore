@@ -1,0 +1,94 @@
+.section-title {
+    color: black;
+    font-size: 1.4rem;
+}
+.user-name {
+    display: block;
+    padding: 10px 0;
+    color: black;
+    font-size: 1.2rem;
+}
+.user-name span {
+    color: orangered;
+    font-size: 1.2rem;
+}
+.redirect-list {
+    padding: 0;
+    /* text-decoration: none; */
+}
+.redirect-list li {
+    padding: 5px 0px;
+}
+.redirect-list a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: black;
+}
+
+.redirect-list .active {
+    color: orangered;
+}
+.fullname {
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 500;
+}
+.fullname span{
+    color: black;
+    font-weight: 400;
+}
+.email {
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    color: black;
+    font-weight: 500;
+}
+.email span {
+    color: black;
+    font-weight: 400;
+}
+table th, table td{
+    color: black;
+}
+th {
+    font-size: 1.2rem;
+    padding: 15px 35px;
+    background-color: rgb(238, 238, 238);
+    border: 1px solid rgb(78, 3, 3);
+}
+table td {
+    text-align: center;
+    border: 1px solid rgb(238, 238, 238);
+    padding: 10px 0;
+}
+#change-password-form label{
+    color: black;
+    font-size: 1.2rem;
+}
+#change-password-form input {
+    margin: 5px 0px;
+    padding: 7px 200px 7px 0;
+}
+#change-password-form button {
+    color: white;
+    background-color:#fd7e14;
+    padding: 10px 20px;
+    border: none;
+    /* margin: 0 auto; */
+    position: relative;
+    left: 25%;
+    transform: translateX(-100%);
+}
+
+.display-none {
+    display: none;
+}
+.display-block {
+    display: block;
+}
+.main {
+    background-color: white;
+}

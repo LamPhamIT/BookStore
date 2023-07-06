@@ -11,4 +11,5 @@ public interface ICartDAO {
     public CartModel findByCartId(Long cartId);
     public void update(CartModel cartModel);
     public void delete(Long cartId);
+    public void deleteByUserID(Long userId);
 }

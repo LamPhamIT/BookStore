@@ -80,7 +80,7 @@ span {
     /* color: var(--font-color); */
 }
 .product-name {
-    text-align: left;
+    text-align: center;
 }
 
 .infor span {

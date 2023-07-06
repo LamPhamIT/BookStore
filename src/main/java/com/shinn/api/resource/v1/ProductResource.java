@@ -10,6 +10,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import org.apache.commons.math3.stat.descriptive.summary.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("v1/books")
@@ -24,8 +25,14 @@ public class ProductResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProductModel> getAll(@QueryParam("page") Integer page, @QueryParam("maxPageItem") Integer maxPageItem,
                                      @QueryParam("SortBy") String sortBy, @QueryParam("sortName") String sortName, @QueryParam("productId") Long productId) {
-        Pageble pageRequest = new PageRequest(page, maxPageItem, new Sorter(sortBy, sortName));
-        List<ProductModel> list = productService.findAll(pageRequest);
+        List<ProductModel> list;
+        if (productId != null) {
+            list = new ArrayList<>();
+            list.add(productService.findOne(productId));
+        } else {
+            Pageble pageRequest = new PageRequest(page, maxPageItem, new Sorter(sortBy, sortName));
+            list = productService.findAll(pageRequest);
+        }
         return list;
     }
 

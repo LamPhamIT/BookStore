@@ -12,4 +12,5 @@ public interface ICartService {
     public List<CartModel> getProduct(List<CartModel> cartModels);
     public CartModel update(CartModel cartModel);
     public void delete(CartModel cartModel);
+    public void deleteByUserID(Long id);
 }
