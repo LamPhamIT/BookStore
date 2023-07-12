@@ -149,9 +149,9 @@
             </div>
 
             <div class="order">
-                <a href="#" class="back">
+                <a href="<c:url value="/trang-chu"/>" class="back">
                     <i class="fa-solid fa-chevron-left"></i>
-                    <span>Quay về giỏ hàng</span>
+                    <span>Quay về trang chủ</span>
                 </a>
                 <a href="#" class="btn" id="submit-form">Đặt hàng</a>
             </div>
@@ -172,8 +172,6 @@
         let note = $('#note').val();
         let shippingFee = $('#shippingFee').val();
         let price = $('#price').val();
-        console.log(shippingFee);
-        console.log(price);
         if (email == "" || phoneNumber == "" || address == "" || fullname == "") {
             alert('Vui lòng nhập đầy đủ thông tin')
             return;

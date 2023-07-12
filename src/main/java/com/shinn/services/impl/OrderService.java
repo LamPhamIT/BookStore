@@ -36,4 +36,21 @@ public class OrderService implements IOrderService {
     public List<OrderModel> findByUserId(Long userId) {
         return orderDAO.findByUserId(userId);
     }
+
+    @Override
+    public OrderModel findByOrderId(Long orderId) {
+        OrderModel orderModel = orderDAO.findByOrderId(orderId);
+        orderModel.setListResult(orderProductDAO.findByOrderId(orderModel.getId()));
+        return orderModel;
+    }
+
+    @Override
+    public int countOrdered() {
+        return orderDAO.countBoughtOrder();
+    }
+
+    @Override
+    public int countUnconfirmed() {
+        return orderDAO.countOrderUnconfirm();
+    }
 }

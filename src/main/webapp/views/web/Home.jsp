@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<c:set var="returnUrl" value="${pageContext.request.requestURL}" scope="session" />
+<%--<c:set var="returnUrl" value="${pageContext.request.requestURL}" scope="session" />--%>
 <div class="background-cover">
 
 </div>
@@ -94,7 +94,7 @@
                             ĐĂNG XUẤT
                         </a>
                     </c:if>
-                    <a href="<c:url value="/thanh-toan"/>">
+                    <a href="<c:url value="/thanh-toan"/>" class="pay">
                         <div class="fas fa-check-square"></div>
                         THANH TOÁN
                     </a>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-5">
                     <div class="logo">
-                        <a href="/" class="logo-wrapper">
+                        <a href="<c:url value="/trang-chu"/>" class="logo-wrapper">
                             <img src="https://bizweb.dktcdn.net/100/047/782/themes/877502/assets/logo.png?1676015839422"
                                  alt="logo">
                         </a>
@@ -169,7 +169,7 @@
                             </div>
                             <div class="services">
                                 <a href="#" class="cart-btn">Giỏ hàng</a>
-                                <a href="<c:url value="/thanh-toan"/>" class="pay-btn">Thanh toán</a>
+                                <a href="<c:url value="/thanh-toan"/>" class="pay-btn pay">Thanh toán</a>
                             </div>
                         </div>
                     </div>
@@ -184,6 +184,7 @@
         </div>
     </div>
 </header>
+<input type="hidden" name="User_id" id="User_ID" value="${User.id}">
 <nav style="position: relative; z-index: 1;">
     <div class="container">
         <div class="row">
@@ -191,7 +192,7 @@
                 <div class="navbar-items">
                     <div class="row g-0">
                         <ul class="navbar-list">
-                            <li class="navbar-item navbar-item-active"><a href="/" class="navbar-link">TRANG CHỦ</a>
+                            <li class="navbar-item navbar-item-active"><a href="<c:url value="/trang-chu"/>" class="navbar-link">TRANG CHỦ</a>
                             </li>
                             <li class="navbar-item"><a href="#" class="navbar-link">GIỚI THIỆU</a></li>
                             <li class="navbar-item hover-item"><a href="#" class="navbar-link">SẢN PHẨM
@@ -257,10 +258,10 @@
                 <span class="category-title">
                   ĐANG GIẢM GIÁ
                 </span>
-                            <span class="show">
-                  Xem tất cả
-                  <div class="fas fa-arrow-right"></div>
-                </span>
+<%--                            <span class="show">--%>
+<%--                  Xem tất cả--%>
+<%--                  <div class="fas fa-arrow-right"></div>--%>
+<%--                </span>--%>
                         </div>
                         <c:forEach var="i" begin="0" end="0" items="${listSale}">
                             <div class="product-block">
@@ -402,10 +403,10 @@
                 <span class="category-title">
                   SẢN PHẨM MỚI
                 </span>
-                            <span class="show">
-                  Xem tất cả
-                  <div class="fas fa-arrow-right"></div>
-                </span>
+<%--                            <span class="show">--%>
+<%--                  Xem tất cả--%>
+<%--                  <div class="fas fa-arrow-right"></div>--%>
+<%--                </span>--%>
                         </div>
                         <div class="row g-0">
                             <c:forEach var="i" items="${listLatest}">
@@ -467,10 +468,10 @@
                         <span class="category-title">
                           SẢN PHẨM GIẢM GIÁ
                         </span>
-                            <span class="show">
-                  Xem tất cả
-                  <div class="fas fa-arrow-right"></div>
-                </span>
+<%--                            <span class="show">--%>
+<%--                  Xem tất cả--%>
+<%--                  <div class="fas fa-arrow-right"></div>--%>
+<%--                </span>--%>
                         </div>
                         <div class="row g-0">
                             <c:forEach var="i" items="${listSale}">

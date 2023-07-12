@@ -15,18 +15,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogs</title>
-<%--    <link rel="stylesheet" href="assets//css//base.css">--%>
+    <%--    <link rel="stylesheet" href="assets//css//base.css">--%>
     <link rel="stylesheet" href="<c:url value="/template/web/assets/css/base.css"/>">
-<%--    <link rel="stylesheet" href="assets//css//blogs.css">--%>
+    <%--    <link rel="stylesheet" href="assets//css//blogs.css">--%>
     <link rel="stylesheet" href="<c:url value="/template/web/assets/css/blogs.css"/>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/template/web/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.css"/>">
+    <link rel="stylesheet" type="text/css"
+          href="<c:url value="/template/web/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.css"/>">
     <script src="<c:url value="/ckeditor/ckeditor.js"/>"></script>
 </head>
 
 <body>
-<c:set var="returnUrl" value="${pageContext.request.requestURL}" scope="session" />
+<c:set var="returnUrl" value="${pageContext.request.requestURL}" scope="session"/>
+<div class="background-cover">
+
+</div>
+<div class="quickview-product">
+
+</div>
+
+
+<div class="hidden-cart">
+    <i class="fas fa-times remove-display"></i>
+    <div class="message">
+        <i class="fas fa-check"></i>
+        <span>Bạn đã thêm </span>
+        <span class="cart-name">Pipi tất dài</span>
+        <span> vào giỏ hàng</span>
+    </div>
+    <div class="table-cart" id="table-cart">
+        <div class="table-header">
+            <div class="product-cart">SẢN PHẨM</div>
+            <div class="price-cart">ĐƠN GIÁ</div>
+            <div class="amount-cart">SỐ LƯỢNG</div>
+            <div class="total-cart">THÀNH TIỀN</div>
+        </div>
+        <div class="table-body">
+
+        </div>
+
+    </div>
+    <div class="total-cart-money">
+
+    </div>
+    <div class="pay-block">
+        <a href="#">Tiến hành đặt hàng</a>
+    </div>
+</div>
+<!-- <ul class="mobile-nav">
+  <li><a href="#">Trang chủ</a></li>
+  <li><a href="#">Giới thiệu</a></li>
+  <li><a href="#">Sản phẩm</a></li>
+  <li><a href="#">Tin tức</a></li>
+  <li><a href="#">Liên hệ</a></li>
+</ul> -->
 <div class="top-header">
     <div class="container">
         <div class="row">
@@ -43,15 +86,15 @@
                         </a>
                     </c:if>
                     <c:if test="${not empty User}">
-                        <a href="#">
+                        <a href="<c:url value="/tai-khoan"/>">
                                 <%--                            <div class="fas fa-sign-in-alt"></div>--%>
-                            WELCOME ${User.firstName}
+                            TÀI KHOẢN
                         </a>
                         <a href="<c:url value="/dang-nhap?action=logout"/>">
                             ĐĂNG XUẤT
                         </a>
                     </c:if>
-                    <a href="#">
+                    <a href="<c:url value="/thanh-toan"/>" class="pay">
                         <div class="fas fa-check-square"></div>
                         THANH TOÁN
                     </a>
@@ -71,7 +114,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-5">
                     <div class="logo">
-                        <a href="/" class="logo-wrapper">
+                        <a href="<c:url value="/trang-chu"/>" class="logo-wrapper">
                             <img src="https://bizweb.dktcdn.net/100/047/782/themes/877502/assets/logo.png?1676015839422"
                                  alt="logo">
                         </a>
@@ -126,7 +169,7 @@
                             </div>
                             <div class="services">
                                 <a href="#" class="cart-btn">Giỏ hàng</a>
-                                <a href="#" class="pay-btn">Thanh toán</a>
+                                <a href="<c:url value="/thanh-toan"/>" class="pay-btn pay">Thanh toán</a>
                             </div>
                         </div>
                     </div>
@@ -148,7 +191,7 @@
                 <div class="navbar-items">
                     <div class="row g-0">
                         <ul class="navbar-list">
-                            <li class="navbar-item navbar-item-active"><a href="/" class="navbar-link">TRANG CHỦ</a>
+                            <li class="navbar-item"><a href="<c:url value="/trang-chu"/>" class="navbar-link">TRANG CHỦ</a>
                             </li>
                             <li class="navbar-item"><a href="#" class="navbar-link">GIỚI THIỆU</a></li>
                             <li class="navbar-item hover-item"><a href="#" class="navbar-link">SẢN PHẨM
@@ -166,16 +209,17 @@
                                 </ul>
 
                             </li>
-                            <li class="navbar-item"><a href="<c:url value="/tin-tuc"/>" class="navbar-link">TIN TỨC</a></li>
+                            <li class="navbar-item navbar-item-active"><a href="<c:url value="/tin-tuc"/>" class="navbar-link">TIN TỨC</a></li>
                             <li class="navbar-item"><a href="#" class="navbar-link">LIÊN HỆ</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 col-12">
-                <form action="<c:url value=""/>" method="GET" class="search-form">
-                    <input type="text" placeholder="Tìm kiếm" name="query">
-                    <button type="submit">
+                <form action="<c:url value="/tim-kiem"/>" method="GET" class="search-form" id="search-form">
+                    <input type="text" placeholder="Tìm kiếm" name="query" id="query">
+                    <input type="hidden" name="type" value="product">
+                    <button type="submit" class="search-submit">
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
@@ -185,17 +229,26 @@
 </nav>
 <div class="main">
     <div class="container">
-        <form action="<c:url value="/tin-tuc"/>"  method="POST" class="blog-form" id="blog-form">
+        <form action="<c:url value="/tin-tuc"/>" class="blog-form" id="blog-form">
+            <input type="hidden" name="id" id="id" value="${blogEdit.id}">
             <label for="">Tiêu đề</label>
-            <input type="text" name="title">
+            <input type="text" name="title" value="${blogEdit.title}">
             <br>
             <label for="">Ảnh đại diện</label>
-            <input type="text" name="thumbnail">
+            <input type="text" name="thumbnail" value="${blogEdit.thumbnail}">
             <br>
             <label for="">Nội dung</label>
-            <textarea rows="" cols="" id="contentCkeditor" name="contentCkeditor" style="width: 80%; height: 500px"></textarea>
-            <input type="hidden" name="content" id="content">
-            <button type="submit" id="submit-form">Đăng bài viết</button>
+            <textarea rows="" cols="" id="contentCkeditor" name="contentCkeditor"
+                      style="width: 80%; height: 500px"></textarea>
+            <%--            <input type="hidden" name="content" id="content">--%>
+            <c:if test="${empty blogEdit}">
+                <button type="submit" id="submit-form">Đăng bài viết</button>
+            </c:if>
+            <c:if test="${not empty blogEdit}">
+                <button type="submit" id="submit-form">Sửa bài viết</button>
+            </c:if>
+            <c:set var="htmlData" value="${blogEdit.content}"/>
+            <textarea id="textContent" style="display: none;"><c:out value="${htmlData}" escapeXml="false"/></textarea>
         </form>
     </div>
 </div>
@@ -287,20 +340,58 @@
     let editor = "";
     $(document).ready(function () {
         editor = CKEDITOR.replace("contentCkeditor");
+        let content = $('#textContent').val();
+        editor.setData(content);
     });
-    $('#submit-form').on('click', function(event) {
+    $('#submit-form').on('click', function (event) {
+        event.preventDefault();
 
-       event.preventDefault();
+        let data={};
+        let formData = $('#blog-form').serializeArray();
+        $.each(formData, function(i, v) {
+            data['' + v.name +''] = v.value;
+        });
+        delete data['contentCkeditor'];
         let text = editor.getData();
-        $('#content').val(text);
-        console.log('hello');
-        $('#blog-form').submit();
+        data['content'] = text;
+        let id = $('#id').val();
+        if (id == "") {
+            addNew(data);
+        } else {
+            update(data);
+        }
+        // $('#content').val(text);
+        // $('#blog-form').submit();
     });
+
+    function update(data) {
+        $.ajax({
+            url: 'tin-tuc',
+            type: 'PUT',
+            data: JSON.stringify(data),
+            success: function (response) {
+                alert('Cập nhật bài viết thành công');
+            }
+        });
+    }
+
+    function addNew(data) {
+        $.ajax({
+            url: 'tin-tuc',
+            type: 'POST',
+            data: data,
+            success: function (response) {
+                alert('Thêm mới thành công');
+            }
+        });
+    }
+
 </script>
 <script type="text/javascript" src="<c:url value="/template/web/assets/js/script.js"/>"></script>
 <%--<script type="text/javascript" src="assets/js/jquery-3.7.0.min.js"></script>--%>
 <%--<script src="<c:url value="/template/web/assets/js/jquery-3.7.0.min.js"/> "></script>--%>
-<script type="text/javascript" src="<c:url value="/template/web/bootstrap/bootstrap-5.0.2-dist/js/bootstrap.js"/>"></script>
+<script type="text/javascript"
+        src="<c:url value="/template/web/bootstrap/bootstrap-5.0.2-dist/js/bootstrap.js"/>"></script>
 </body>
 
 </html>

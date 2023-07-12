@@ -26,4 +26,23 @@ public class OrderDAO extends AbstractDAO<OrderDAO> implements IOrderDAO {
         String sql = "SELECT * FROM Order_Detail AS o INNER JOIN Order_Status AS s ON o.Status_ID=s.Status_ID WHERE User_ID=?";
         return query(sql, new OrderMapper(), userId);
     }
+
+    @Override
+    public OrderModel findByOrderId(Long id) {
+        String sql = "SELECT * FROM Order_Detail AS o INNER JOIN Order_Status AS s ON o.Status_ID=s.Status_ID WHERE Order_ID=?";
+        List<OrderModel> list = query(sql, new OrderMapper(), id);
+        return list.isEmpty()? null : list.get(0);
+    }
+
+    @Override
+    public int countBoughtOrder() {
+        String sql = "SELECT COUNT(*) FROM Order_Detail WHERE Status_ID=3";
+        return count(sql);
+    }
+
+    @Override
+    public int countOrderUnconfirm() {
+        String sql = "SELECT COUNT(*) FROM Order_Detail WHERE Status_ID=1";
+        return count(sql);
+    }
 }

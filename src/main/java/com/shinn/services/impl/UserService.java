@@ -27,4 +27,29 @@ public class UserService implements IUserService {
     public List<UserModel> findAll() {
         return userDAO.findAll();
     }
+
+    @Override
+    public boolean updatePasswordById(UserModel userModel) {
+       UserModel userCheck = userDAO.findByEmailAndPassword(userModel.getEmail(), userModel.getPassword());
+        if(userCheck == null) {
+            return false;
+        }
+        userDAO.updatePasswordById(userModel);
+        return true;
+    }
+
+    @Override
+    public UserModel findByEmail(String email) {
+        return userDAO.findByEmail(email);
+    }
+
+    @Override
+    public UserModel findById(Long id) {
+       return userDAO.findById(id);
+    }
+
+    @Override
+    public void updateUser(UserModel user) {
+
+    }
 }

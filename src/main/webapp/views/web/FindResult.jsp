@@ -78,7 +78,7 @@
                         </a>
                     </c:if>
                     <c:if test="${not empty User}">
-                        <a href="#">
+                        <a href="<c:url value="/tai-khoan"/>">
                                 <%--                            <div class="fas fa-sign-in-alt"></div>--%>
                             TÀI KHOẢN
                         </a>
@@ -86,7 +86,7 @@
                             ĐĂNG XUẤT
                         </a>
                     </c:if>
-                    <a href="#">
+                    <a href="<c:url value="/thanh-toan"/>" class="pay">
                         <div class="fas fa-check-square"></div>
                         THANH TOÁN
                     </a>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-5">
                     <div class="logo">
-                        <a href="/" class="logo-wrapper">
+                        <a href="<c:url value="/trang-chu"/>" class="logo-wrapper">
                             <img src="https://bizweb.dktcdn.net/100/047/782/themes/877502/assets/logo.png?1676015839422"
                                  alt="logo">
                         </a>
@@ -161,7 +161,7 @@
                             </div>
                             <div class="services">
                                 <a href="#" class="cart-btn">Giỏ hàng</a>
-                                <a href="#" class="pay-btn">Thanh toán</a>
+                                <a href="<c:url value="/thanh-toan"/>" class="pay-btn pay">Thanh toán</a>
                             </div>
                         </div>
                     </div>
@@ -183,7 +183,7 @@
                 <div class="navbar-items">
                     <div class="row g-0">
                         <ul class="navbar-list">
-                            <li class="navbar-item navbar-item-active"><a href="/" class="navbar-link">TRANG CHỦ</a>
+                            <li class="navbar-item"><a href="<c:url value="/trang-chu"/>" class="navbar-link">TRANG CHỦ</a>
                             </li>
                             <li class="navbar-item"><a href="#" class="navbar-link">GIỚI THIỆU</a></li>
                             <li class="navbar-item hover-item"><a href="#" class="navbar-link">SẢN PHẨM
@@ -209,7 +209,7 @@
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 col-12">
                 <form action="<c:url value="/tim-kiem"/>" method="GET" class="search-form" id="search-form">
-                    <input type="text" placeholder="Tìm kiếm" name="query" id="query" value="${keyword}">
+                    <input type="text" placeholder="Tìm kiếm" name="query" id="query">
                     <input type="hidden" name="type" value="product">
                     <button type="submit" class="search-submit">
                         <i class="fas fa-search"></i>

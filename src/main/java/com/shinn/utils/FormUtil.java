@@ -2,7 +2,6 @@ package com.shinn.utils;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.beanutils.BeanUtils;
-
 import java.lang.reflect.InvocationTargetException;
 
 public class FormUtil {

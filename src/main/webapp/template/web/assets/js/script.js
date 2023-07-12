@@ -109,13 +109,17 @@ function addJsonToLocalStorage(data) {
     let existData = JSON.parse(jsonFromLocal) || [];
     let check = false;
     let cart = JSON.parse(jsonFromServer)
-    for (let i = 0; i < existData.length; i++) {
-        if (cart.product.title == existData[i].product.title) {
-            existData[i].num += cart.num;
-            check = true;
-            break;
+    console.log('data: ' + existData.length);
+    // if(existData != []) {
+        for (let i = 0; i < existData.length; i++) {
+            // console.log(i);
+            if (cart.product.title == existData[i].product.title) {
+                existData[i].num += cart.num;
+                check = true;
+                break;
+            }
         }
-    }
+    // }
     if (check == false) {
         existData = existData.concat(cart);
     }
@@ -221,6 +225,8 @@ function    displayHoverCart(data) {
         let count = 0;
         let totalMoney = 0;
         for (let i = 0; i < data.length; i++) {
+            // let product = data[i].product;
+            console.log("Product discount = " + data[i].product.discount);
             if (data[i].product.discount != 0) {
                 totalMoney += data[i].product.discount * data[i].num;
             } else {
@@ -318,7 +324,6 @@ $(document).on('click', '.decrease', function () {
         $('#hoverTotal').html(newPriceText);
         $('#hiddenTotal').html(newPriceText);
     }
-
     input.val(value);
     let decreaseDiv = $(this);
     decreaseTimeOut = setTimeout(function () {
@@ -335,7 +340,7 @@ $(document).on('click', '.decrease', function () {
             }
 
             let name = $(nameSpan).text();
-            console.log(name);
+            // console.log(name);
             for (let i = 0; i < dataFromLocal.length; i++) {
                 if (name == dataFromLocal[i].product.title) {
                     dataFromLocal[i].num = value;
@@ -534,4 +539,37 @@ $('.search-submit').on("click", function (event) {
    } else {
         form.submit();
    }
+});
+$('.pay').on('click', function(event) {
+    event.preventDefault();
+    // console.log("Hello");
+    if(userId == "") {
+        let jsonFromLocal = localStorage.getItem("Json_Cart_String");
+        let dataFromLocal = JSON.parse(jsonFromLocal);
+        console.log(dataFromLocal);
+        if(dataFromLocal.length == 0) {
+            alert("Chọn sản phẩm vào giỏ hàng để thanh toán.");
+        } else{
+            let link = event.target.href;
+            window.location.href = link;
+        }
+    } else {
+        $.ajax({
+            url: 'api/v1/carts',
+            type: 'GET',
+            data: {
+                user_id: userId
+            },
+            success: function (response) {
+                // let data = JSON.parse(response);
+                if(response.length == 0) {
+                    alert("Chọn sản phẩm vào giỏ hàng để thanh toán.");
+                } else {
+                    let link = event.target.href;
+                    window.location.href = link;
+                }
+            }
+        });
+    }
+
 });

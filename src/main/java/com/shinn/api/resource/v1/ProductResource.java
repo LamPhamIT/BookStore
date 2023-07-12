@@ -13,6 +13,8 @@ import org.apache.commons.math3.stat.descriptive.summary.Product;
 import java.util.ArrayList;
 import java.util.List;
 
+
+// JAX-RS
 @Path("v1/books")
 public class ProductResource {
     private IProductService productService;

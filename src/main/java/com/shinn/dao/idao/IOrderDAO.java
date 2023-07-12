@@ -7,4 +7,7 @@ import java.util.List;
 public interface IOrderDAO{
     public Long insert(OrderModel orderModel);
     public List<OrderModel> findByUserId(Long userId);
+    public OrderModel findByOrderId(Long id);
+    public int countBoughtOrder();
+    public int countOrderUnconfirm();
 }

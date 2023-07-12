@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@include file="/common/taglib.jsp"%>
+<%@include file="/common/taglib.jsp" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,11 +20,54 @@
     <link rel="stylesheet" href="<c:url value="/template/web/assets/css/blogs.css"/>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/template/web/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.css"/>">
+    <link rel="stylesheet" type="text/css"
+          href="<c:url value="/template/web/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.css"/>">
 </head>
 
 <body>
-<c:set var="returnUrl" value="${pageContext.request.requestURL}" scope="session" />
+<c:set var="returnUrl" value="${pageContext.request.requestURL}" scope="session"/>
+<div class="background-cover">
+
+</div>
+<div class="quickview-product">
+
+</div>
+
+
+<div class="hidden-cart">
+    <i class="fas fa-times remove-display"></i>
+    <div class="message">
+        <i class="fas fa-check"></i>
+        <span>Bạn đã thêm </span>
+        <span class="cart-name">Pipi tất dài</span>
+        <span> vào giỏ hàng</span>
+    </div>
+    <div class="table-cart" id="table-cart">
+        <div class="table-header">
+            <div class="product-cart">SẢN PHẨM</div>
+            <div class="price-cart">ĐƠN GIÁ</div>
+            <div class="amount-cart">SỐ LƯỢNG</div>
+            <div class="total-cart">THÀNH TIỀN</div>
+        </div>
+        <div class="table-body">
+
+        </div>
+
+    </div>
+    <div class="total-cart-money">
+
+    </div>
+    <div class="pay-block">
+        <a href="#">Tiến hành đặt hàng</a>
+    </div>
+</div>
+<!-- <ul class="mobile-nav">
+  <li><a href="#">Trang chủ</a></li>
+  <li><a href="#">Giới thiệu</a></li>
+  <li><a href="#">Sản phẩm</a></li>
+  <li><a href="#">Tin tức</a></li>
+  <li><a href="#">Liên hệ</a></li>
+</ul> -->
 <div class="top-header">
     <div class="container">
         <div class="row">
@@ -40,15 +84,15 @@
                         </a>
                     </c:if>
                     <c:if test="${not empty User}">
-                        <a href="#">
+                        <a href="<c:url value="/tai-khoan"/>">
                                 <%--                            <div class="fas fa-sign-in-alt"></div>--%>
-                            WELCOME ${User.firstName}
+                            TÀI KHOẢN
                         </a>
                         <a href="<c:url value="/dang-nhap?action=logout"/>">
                             ĐĂNG XUẤT
                         </a>
                     </c:if>
-                    <a href="#">
+                    <a href="<c:url value="/thanh-toan"/>" class="pay">
                         <div class="fas fa-check-square"></div>
                         THANH TOÁN
                     </a>
@@ -68,7 +112,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-5">
                     <div class="logo">
-                        <a href="/" class="logo-wrapper">
+                        <a href="<c:url value="/trang-chu"/>" class="logo-wrapper">
                             <img src="https://bizweb.dktcdn.net/100/047/782/themes/877502/assets/logo.png?1676015839422"
                                  alt="logo">
                         </a>
@@ -123,7 +167,7 @@
                             </div>
                             <div class="services">
                                 <a href="#" class="cart-btn">Giỏ hàng</a>
-                                <a href="#" class="pay-btn">Thanh toán</a>
+                                <a href="<c:url value="/thanh-toan"/>" class="pay-btn pay">Thanh toán</a>
                             </div>
                         </div>
                     </div>
@@ -145,7 +189,7 @@
                 <div class="navbar-items">
                     <div class="row g-0">
                         <ul class="navbar-list">
-                            <li class="navbar-item navbar-item-active"><a href="/" class="navbar-link">TRANG CHỦ</a>
+                            <li class="navbar-item "><a href="<c:url value="/trang-chu"/>" class="navbar-link">TRANG CHỦ</a>
                             </li>
                             <li class="navbar-item"><a href="#" class="navbar-link">GIỚI THIỆU</a></li>
                             <li class="navbar-item hover-item"><a href="#" class="navbar-link">SẢN PHẨM
@@ -163,16 +207,17 @@
                                 </ul>
 
                             </li>
-                            <li class="navbar-item"><a href="<c:url value="/tin-tuc"/>" class="navbar-link">TIN TỨC</a></li>
+                            <li class="navbar-item navbar-item-active"><a href="<c:url value="/tin-tuc"/>" class="navbar-link">TIN TỨC</a></li>
                             <li class="navbar-item"><a href="#" class="navbar-link">LIÊN HỆ</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-12 col-sm-12 col-12">
-                <form action="<c:url value=""/>" method="GET" class="search-form">
-                    <input type="text" placeholder="Tìm kiếm" name="query">
-                    <button type="submit">
+                <form action="<c:url value="/tim-kiem"/>" method="GET" class="search-form" id="search-form">
+                    <input type="text" placeholder="Tìm kiếm" name="query" id="query">
+                    <input type="hidden" name="type" value="product">
+                    <button type="submit" class="search-submit">
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
@@ -188,19 +233,34 @@
                 <section class="aside">
                     <h3>DANH MỤC TIN TỨC</h3>
                     <ul class="nav_list">
-                        <li class="nav_link"><a href="#">Trang chủ</a></li>
+                        <li class="nav_link"><a href="<c:url value="/trang-chu"/>">Trang chủ</a></li>
                         <li class="nav_link"><a href="#">Giới thiệu</a></li>
-                        <li class="nav_link"><a href="#">Sản phẩm</a></li>
+<%--                        <li class="nav_link"><a href="#">Sản phẩm</a></li>--%>
                         <li class="nav_link"><a href="#">Tin tức</a></li>
                         <li class="nav_link"><a href="#">Liên hệ</a></li>
                     </ul>
                     <h3>TIN TỨC MỚI</h3>
                     <ul class="nav_list">
-                        <li class="nav_link"><a href="#">Chuyện con ốc sên muốn biết tại sao nó chậm</a></li>
-                        <li class="nav_link"><a href="#">Lũ trẻ nhà Penderwicks</a></li>
-                        <li class="nav_link"><a href="#">Em muốn có một cuộc tình già với anh</a></li>
-                        <li class="nav_link"><a href="#">Lý Gia Thành "Ong chủ của những ông chủ"</a></li>
-                        <li class="nav_link"><a href="#">Khi phụ nữ uống trà đàn ông nên cẩn thận</a></li>
+                        <c:choose>
+                            <c:when test="${listBlog.size() >= 5}">
+                                <c:set var="loopLimit" value="5" />
+                            </c:when>
+                            <c:otherwise>
+                                <c:set var="loopLimit" value="${listBlog.size()}" />
+                            </c:otherwise>
+                        </c:choose>
+
+                        <c:forEach var="i" items="${listBlog}" begin="0" end="${loopLimit - 1}">
+                            <c:url var="blogUrl" value="/tin-tuc">
+                                <c:param name="blogId" value="${i.id}}"></c:param>
+                            </c:url>
+                            <li class="nav_link"><a href="${blogUrl}">${i.title}</a></li>
+                        </c:forEach>
+<%--                        <li class="nav_link"><a href="#">Chuyện con ốc sên muốn biết tại sao nó chậm</a></li>--%>
+<%--                        <li class="nav_link"><a href="#">Lũ trẻ nhà Penderwicks</a></li>--%>
+<%--                        <li class="nav_link"><a href="#">Em muốn có một cuộc tình già với anh</a></li>--%>
+<%--                        <li class="nav_link"><a href="#">Lý Gia Thành "Ong chủ của những ông chủ"</a></li>--%>
+<%--                        <li class="nav_link"><a href="#">Khi phụ nữ uống trà đàn ông nên cẩn thận</a></li>--%>
                     </ul>
                 </section>
             </div>
@@ -208,49 +268,26 @@
                 <div class="blogs-wrapper">
                     <div class="row">
                         <span>Tin tức</span>
-                        <div class="news-blog">
-                            <a href="<c:url value="/tin-tuc?action=write"/>">Viết bài viết</a>
-                        </div>
-
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="summary-blog">
-                                    <span class="blog-name"><a href="#">Chuyện con ốc sên muốn biết tại sao nó chậm
-                                            chạp</a></span>
-                                <span class="created-date">23/05/2023</span>
-                                <a href="#"><img
-                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/articles/oc-sen.jpg?v=1452585704087"
-                                        alt=""></a>
-                                <p>Tags:</p>
-                                <span class="amount-comment">12</span>
-                                <span> Bình luận | Bài viết được đăng bởi </span>
+<%--                        <div class="news-blog">--%>
+<%--                            <a href="<c:url value="/tin-tuc?action=write"/>">Viết bài viết</a>--%>
+<%--                        </div>--%>
+                        <c:forEach var="i" items="${listBlog}">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                                <div class="summary-blog">
+                                    <c:url var="blogUrl" value="/tin-tuc">
+                                        <c:param name="blogId" value="${i.id}"></c:param>
+                                    </c:url>
+                                    <span class="blog-name"><a href="${blogUrl}">${i.title}</a></span>
+                                    <span class="created-date"><fmt:formatDate value="${i.createdDate}" pattern="dd/MM/yyyy"/></span>
+                                    <a href="${blogUrl}"><img
+                                            src="${i.thumbnail}"
+                                            alt=""></a>
+                                    <p>Tags:</p>
+                                    <span class="amount-comment">${i.amountComment}</span>
+                                    <span> Bình luận | Bài viết được đăng bởi ${i.user.firstName} ${i.user.lastName}</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="summary-blog">
-                                    <span class="blog-name"><a href="#">Chuyện con ốc sên muốn biết tại sao nó chậm
-                                            chạp</a></span>
-                                <span class="created-date">23/05/2023</span>
-                                <div class="thumbnail"><a href="#"><img
-                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/articles/lu-tre.jpg?v=1452585724897"
-                                        alt=""></a></div>
-                                <p>Tags:</p>
-                                <span class="amount-comment">12</span>
-                                <span> Bình luận | Bài viết được đăng bởi </span>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                            <div class="summary-blog">
-                                    <span class="blog-name"><a href="#">Chuyện con ốc sên muốn biết tại sao nó chậm
-                                            chạp</a></span>
-                                <span class="created-date">23/05/2023</span>
-                                <div class="thumbnail"><a href="#"><img
-                                        src="https://bizweb.dktcdn.net/thumb/large/100/047/782/articles/oc-sen.jpg?v=1452585704087"
-                                        alt=""></a></div>
-                                <p>Tags:</p>
-                                <span class="amount-comment">12</span>
-                                <span> Bình luận | Bài viết được đăng bởi </span>
-                            </div>
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -344,7 +381,8 @@
 </footer>
 <script type="text/javascript" src="<c:url value="/template/web/assets/js/script.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/template/web/assets/js/jquery-3.7.0.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/template/web/bootstrap/bootstrap-5.0.2-dist/js/bootstrap.js"/>"></script>
+<script type="text/javascript"
+        src="<c:url value="/template/web/bootstrap/bootstrap-5.0.2-dist/js/bootstrap.js"/>"></script>
 </body>
 
 </html>

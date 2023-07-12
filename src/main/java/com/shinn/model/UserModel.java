@@ -17,4 +17,5 @@ public class UserModel extends AbstractModel implements Serializable {
     private String lastName;
     private String phoneNumber;
     private RoleModel role;
+    private String newPassword;
 }

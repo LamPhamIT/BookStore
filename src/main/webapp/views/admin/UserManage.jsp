@@ -58,7 +58,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<c:url value="/admin-trang-chu"/>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -349,7 +349,7 @@
                         <span>Quản lý User</span>
                         <div class="text-right">
                             <a flag="info" class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-                               data-toggle="tooltip" title='Thêm san pham' href='#'>
+                               data-toggle="tooltip" title='Thêm người dùng' href="<c:url value="/admin-quan-ly-tai-khoan?action=addNew"/>">
                                     <span>
                                         <i class="fa fa-plus-circle bigger-110 purple"></i>
                                     </span>
@@ -393,17 +393,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Lam</td>
-                                    <td>Pham</td>
-                                    <td>Lamtkhtk2004@gmail.com</td>
-                                    <td>0385979034</td>
-                                    <td>Admin</td>
-                                    <td><a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                           title="Cập san pham" href='#'><i class="fa-solid fa-pencil"></i>
-                                    </a></td>
-                                </tr>
+                              <c:forEach var="i" items="${listUser}">
+                                  <tr>
+                                      <td>${i.id}</td>
+                                      <td>${i.firstName}</td>
+                                      <td>${i.lastName}</td>
+                                      <td>${i.email}</td>
+                                      <td>${i.phoneNumber}</td>
+                                      <td>${i.role.name}</td>
+                                      <c:url var="editUrl" value="/admin-quan-ly-tai-khoan?action=edit">
+                                          <c:param name="id" value="${i.id}"></c:param>
+                                      </c:url>
+                                      <td><a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
+                                             title="Cập san pham" href="${editUrl}"><i class="fa-solid fa-pencil"></i>
+                                      </a></td>
+                                  </tr>
+                              </c:forEach>
                                 </tbody>
                             </table>
                         </div>

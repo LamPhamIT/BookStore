@@ -38,6 +38,7 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
+        req.setAttribute("listCategory", categoryService.findAll());
         if (action != null && action.equals("login")) {
             String message = req.getParameter("message");
             String alert = req.getParameter("alert");
@@ -47,11 +48,6 @@ public class Home extends HttpServlet {
             }
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/web/Login.jsp");
             requestDispatcher.forward(req, resp);
-//            HttpSession session = req.getSession();
-//            String returnUrl = (String) session.getAttribute("returnUrl");
-//
-//            // Chuyển hướng trở lại trang trước đó
-//            resp.sendRedirect(returnUrl);
         } else if (action != null && action.equals("logout")) {
             SessionUtil.getInstance().removeValue(req, SystemConstant.USER);
             resp.sendRedirect(req.getContextPath() + "/dang-nhap?action=login");
@@ -63,15 +59,10 @@ public class Home extends HttpServlet {
                 req.setAttribute("message", resourceBundle.getString(message));
                 req.setAttribute("alert", alert);
             }
-//            HttpSession session = req.getSession();
-//            String returnUrl = (String) session.getAttribute("returnUrl");
-//
-//            // Chuyển hướng trở lại trang trước đó
-//            resp.sendRedirect(returnUrl);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/web/Signup.jsp");
             requestDispatcher.forward(req, resp);
         } else {
-            req.setAttribute("listCategory", categoryService.findAll());
+
             req.setAttribute("listLatest", productService.findLatestProducts(4));
             req.setAttribute("listSale", productService.findSaleProducts(8));
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/web/Home.jsp");

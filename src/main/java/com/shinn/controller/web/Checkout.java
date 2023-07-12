@@ -1,7 +1,9 @@
 package com.shinn.controller.web;
 
 import com.google.gson.Gson;
+import com.restfb.types.User;
 import com.shinn.constant.SystemConstant;
+import com.shinn.model.CartModel;
 import com.shinn.model.OrderModel;
 import com.shinn.model.OrderProductModel;
 import com.shinn.model.UserModel;
@@ -36,6 +38,14 @@ public class Checkout extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UserModel user = (UserModel) SessionUtil.getInstance().getValue(req, SystemConstant.USER);
+        String url = "";
+        if(user != null) {
+            List<CartModel> cartModels = cartService.findByUserId(user.getId());
+            if(cartModels.isEmpty()) {
+                url = "/views/web/Home.jsp";
+            }
+        }
         RequestDispatcher rd = req.getRequestDispatcher("/views/web/CheckOut.jsp");
         rd.forward(req, resp);
     }
@@ -57,6 +67,9 @@ public class Checkout extends HttpServlet {
             orderModel.setUser(userModel);
             cartService.deleteByUserID(userModel.getId());
         }
-        orderService.insert(orderModel);
+        Long id = orderService.insert(orderModel);
+//        req.setAttribute("order", orderService.findByOrderId(id));
+//        RequestDispatcher rd = req.getRequestDispatcher("/views/web/Success.jsp");
+//        rd.forward(req, resp);
     }
 }
