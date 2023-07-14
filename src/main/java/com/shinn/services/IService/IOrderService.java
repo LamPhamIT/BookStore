@@ -10,5 +10,9 @@ public interface IOrderService {
     public OrderModel findByOrderId(Long orderId);
     public int countOrdered();
     public int countUnconfirmed();
+    public List<OrderModel> findAll();
+    public List<OrderModel> findByStatusId(Long id);
+    public void updateStatus(Long orderId, Long statusId);
+    public void delete(OrderModel orderModel);
 
 }

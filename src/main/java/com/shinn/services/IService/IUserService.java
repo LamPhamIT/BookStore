@@ -12,4 +12,5 @@ public interface IUserService {
     public UserModel findByEmail(String email);
     public UserModel findById(Long id);
     public void updateUser(UserModel user);
+    public void delete(UserModel user);
 }

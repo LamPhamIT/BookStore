@@ -22,9 +22,15 @@ public class UserResource {
     }
 
     @PUT
-    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void update(UserModel userModel) {
+        userService.updateUser(userModel);
+    }
 
+
+    @DELETE
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void delete(UserModel userModel) {
+        userService.delete(userModel);
     }
 }

@@ -11,7 +11,7 @@ public class StatisticDAO extends AbstractDAO<StatisticModel> implements IStatis
     @Override
     public StatisticModel statisticByCurrentMonth() {
         String sql = "SELECT DATE_FORMAT(CreatedDate, '%Y-%m') AS Statistic_Date, SUM(Price) AS Total " + "FROM Order_Detail " +
-                "WHERE DATE_FORMAT(CreatedDate, '%Y-%m') = DATE_FORMAT(CURDATE(), '%Y-%m') " +
+                "WHERE DATE_FORMAT(CreatedDate, '%Y-%m') = DATE_FORMAT(CURDATE(), '%Y-%m') AND Status_ID=3 " +
                 "GROUP BY DATE_FORMAT(CreatedDate, '%Y-%m');";
         List<StatisticModel> list= query(sql, new StatisticMapper());
         return list.get(0);
@@ -20,7 +20,7 @@ public class StatisticDAO extends AbstractDAO<StatisticModel> implements IStatis
     @Override
     public StatisticModel statisticAVGByMonth() {
         String sql = "SELECT AVg(tempTable.T) AS total FROM (SELECT DATE_FORMAT(CreatedDate, '%Y-%m') AS current_month, SUM(Price) AS T FROM Order_Detail " +
-                " GROUP BY DATE_FORMAT(CreatedDate, '%Y-%m')) AS tempTable";
+                "WHERE Status_ID=3 GROUP BY DATE_FORMAT(CreatedDate, '%Y-%m')) AS tempTable";
         List<StatisticModel> list= query(sql, new StatisticMapper());
         return list.get(0);
     }

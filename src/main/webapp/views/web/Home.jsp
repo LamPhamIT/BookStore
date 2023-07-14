@@ -410,7 +410,7 @@
                         </div>
                         <div class="row g-0">
                             <c:forEach var="i" items="${listLatest}">
-                                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div class="product-block col-product">
                                         <div class="product-box">
                                             <div class="product-thumbnail">

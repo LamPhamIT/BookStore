@@ -36,21 +36,113 @@
     <!-- Custom styles for this page -->
     <%--    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="<c:url value="/template/admin/vendor/datatables/dataTables.bootstrap4.min.css"/>">
+    <%--    <link rel="stylesheet" href="<c:url value="/template/web/assets/css/base.css"/>">--%>
     <script src="https://code.jquery.com/jquery-3.7.0.js"
             integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="<c:url value="/template/admin/vendor/bootstrap/js/bootstrap.min.js"/>"></script>
     <script src="<c:url value="/template/paging/jquery.twbsPagination.min.js"/>"></script>
     <style>
+        body {
+            position: relative;
+        }
+
         select {
             padding: 5px 20px;
             outline: none;
 
         }
 
+        .list-product {
+            position: absolute;
+            width: 50%;
+            /*height: 50px;*/
+            background-color: white;
+            z-index: 10;
+            left: 50%;
+            top: 35%;
+            transform: translateX(-50%) translateY(-50%);
+            display: none;
+        }
+
+        .list-product table {
+            width: 100%;
+            padding: 50px;
+        }
+
+        th, td {
+            border: 1px solid gray;
+            text-align: center;
+        }
+
+        .myButton {
+            padding: 10px 15px;
+            border: 0px;
+        }
+
+        .display-block {
+            display: block;
+
+
+        }
+
+        /*.visible{*/
+        /*    opacity: 1;*/
+        /*    visibility: visible;*/
+        /*}*/
+        .background-cover {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 9;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .display-block {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .display-not-block {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fa-times {
+            color: white;
+            padding: 6px 9px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            left: 99%;
+            top: -2px;
+        }
     </style>
 </head>
 <body id="page-top">
+<div class="background-cover">
 
+</div>
+<div class="list-product">
+    <i class="fas fa-times remove-display"></i>
+    <table>
+        <thead>
+        <tr>
+            <th>Product name</th>
+            <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+
+</div>
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -72,7 +164,6 @@
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-
         <!-- Heading -->
         <!-- <div class="sidebar-heading">
             Interface
@@ -126,6 +217,7 @@
             </a>
         </li>
 
+
         <!-- Nav Item - Tables -->
         <!-- <li class="nav-item">
             <a class="nav-link" href="tables.html">
@@ -165,7 +257,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-<%--                <!-- Topbar Search -->--%>
+                <%--                <!-- Topbar Search -->--%>
                 <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
@@ -179,7 +271,7 @@
                     </div>
                 </form>
 
-<%--                <!-- Topbar Navbar -->--%>
+                <%--                <!-- Topbar Navbar -->--%>
                 <ul class="navbar-nav ml-auto">
 
                     <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -366,60 +458,60 @@
                 </ul>
 
             </nav>
-<%--            <!-- End of Topbar -->--%>
-<%--            <!-- Begin Page Content -->--%>
+            <%--            <!-- End of Topbar -->--%>
+            <%--            <!-- Begin Page Content -->--%>
             <div class="container-fluid">
-<%--                Hello--%>
-<%--                <!-- Page Heading -->--%>
+                <%--                Hello--%>
+                <%--                <!-- Page Heading -->--%>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-sm-5 col-5">
                                 <div class="text-right">
-                                    <form id="formSubmit" method="GET" action="<c:url value="/admin-quan-ly-sach"/> " style="padding-left: 100px">
-                                        <input type="hidden" value="" id="page" name="page"/>
-                                        <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
-                                        <span>Sắp xếp</span>
-                                        <select name="sortBy" id="sortBy" class="sort" onclick="sortTable()">
-                                            <option value="Product_ID" select="selected">ID</option>
-                                            <option value="title">Title</option>
-                                            <option value="price">Price</option>
-                                            <option value="remain_quality">Quantity</option>
-                                            <option value="discount">Discount</option>
-                                        </select>
-                                        <span>Chiều</span>
-                                        <select name="sortName" id="sortName" class="sort" onclick="sortTable()">
-                                            <option value="asc" select="selected">Asc</option>
-                                            <option value="desc">Desc</option>
-                                        </select>
-                                    </form>
+                                    <%--                                    <form id="formSubmit" method="GET" action="<c:url value="/admin-quan-ly-sach"/> "--%>
+                                    <%--                                          style="padding-left: 100px">--%>
+                                    <%--                                        <input type="hidden" value="" id="page" name="page"/>--%>
+                                    <%--                                        <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>--%>
+                                    <%--                                        <span>Sắp xếp</span>--%>
+                                    <%--                                        <select name="sortBy" id="sortBy" class="sort" onclick="sortTable()">--%>
+                                    <%--                                            <option value="Product_ID" select="selected">ID</option>--%>
+                                    <%--                                            <option value="title">Title</option>--%>
+                                    <%--                                            <option value="price">Price</option>--%>
+                                    <%--                                            <option value="remain_quality">Quantity</option>--%>
+                                    <%--                                            <option value="discount">Discount</option>--%>
+                                    <%--                                        </select>--%>
+                                    <%--                                        <span>Chiều</span>--%>
+
+                                    <%--                                    </form>--%>
+                                    <select name="statusId" id="status" class="select">
+                                    <option select="selected" value="0">Tất cả</option>
+                                    <option value="1">Chờ duyệt</option>
+                                    <option value="2">Đang vận chuyển</option>
+                                    <option value="3">Hoàn thành</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-4">
-                                <div class="text-right">
-                                <form action="<c:url value="/admin-export-file"/>" method="POST" id="exportForm">
-                                    <%--                                        <input type="hidden" value="" name="page">--%>
-                                    <%--                                        <input type="hidden" value="" name="maxPageItem">--%>
-                                    <input type="hidden" value="" name="sortBy" id="hiddenSortBy">
-                                    <input type="hidden" value="" name="sortName" id="hiddenSortName">
-                                    <input type="input" placeholder="Choose path to save" style="margin-left: 20px; outline:none;" name="filePath">
-                                </form>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-                                <div class="text-right">
-                                    <button class="btn btn-success" id="export-file">Export Excel file</button>
-                                </div>
+                                <%--                                <div class="text-right">--%>
+                                <%--                                    <form action="<c:url value="/admin-export-file"/>" method="POST" id="exportForm">--%>
+                                <%--                                        &lt;%&ndash;                                        <input type="hidden" value="" name="page">&ndash;%&gt;--%>
+                                <%--                                        &lt;%&ndash;                                        <input type="hidden" value="" name="maxPageItem">&ndash;%&gt;--%>
+                                <%--                                        <input type="hidden" value="" name="sortBy" id="hiddenSortBy">--%>
+                                <%--                                        <input type="hidden" value="" name="sortName" id="hiddenSortName">--%>
+                                <%--                                        <input type="input" placeholder="Choose path to save"--%>
+                                <%--                                               style="margin-left: 20px; outline:none;" name="filePath">--%>
+                                <%--                                    </form>--%>
+                                <%--                                </div>--%>
                             </div>
                             <div class="col-lg-1 col-md-1 col-sm-1 col-1">
                                 <div class="text-right">
-                                    <a flag="info" class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-                                       data-toggle="tooltip" title='Thêm san pham'
-                                       href='<c:url value="/admin-quan-ly-sach?action=addnew"/>'>
-                                    <span>
-                                        <i class="fa fa-plus-circle bigger-110 purple"></i>
-                                    </span>
-                                    </a>
+                                    <%--                                    <a flag="info" class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"--%>
+                                    <%--                                       data-toggle="tooltip" title='Thêm san pham'--%>
+                                    <%--                                       href='<c:url value="/admin-quan-ly-sach?action=addnew"/>'>--%>
+                                    <%--                                    <span>--%>
+                                    <%--                                        <i class="fa fa-plus-circle bigger-110 purple"></i>--%>
+                                    <%--                                    </span>--%>
+                                    <%--                                    </a>--%>
                                     <button id="btnDelete" type="button"
                                             class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
                                             data-toggle="tooltip" title='Xóa san pham'>
@@ -433,51 +525,54 @@
                         </div>
                     </div>
                 </div>
-<%--                <!-- DataTales Example -->--%>
+                <%--                <!-- DataTales Example -->--%>
                 <div class="card shadow mb-4">
-<%--                    <div class="card-header py-3">--%>
-<%--                        <h6 class="m-0 font-weight-bold text-primary"></h6>--%>
-<%--                    </div>--%>
+                    <%--                    <div class="card-header py-3">--%>
+                    <%--                        <h6 class="m-0 font-weight-bold text-primary"></h6>--%>
+                    <%--                    </div>--%>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
                                     <th><input type="checkbox" id="check-all">All</th>
-                                    <th>Product ID</th>
-                                    <th>Title</th>
-                                    <th>Thumbnail</th>
-                                    <th>Description</th>
+                                    <th>Order Id</th>
+                                    <th>Full name</th>
+                                    <th>email</th>
+                                    <th>Phone number</th>
+                                    <th>Address</th>
+                                    <th>Note</th>
                                     <th>Price</th>
-                                    <th>Discount</th>
-                                    <th>Quantity</th>
-                                    <th>Category</th>
+                                    <th>Shipping fee</th>
+                                    <th>Total</th>
+                                    <th>Product</th>
+                                    <th>Status</th>
                                     <!-- <th>Salary</th> -->
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="table-body">
 
-                                <c:forEach var="i" items="${listProduct}">
+                                <c:forEach var="i" items="${listOrder}">
                                     <tr>
                                         <td><input type="checkbox" class="check-input" name="${i.id}" value="${i.id}">
                                         </td>
-                                        <td class="Product_ID">${i.id}</td>
-                                        <td class="title">${i.title}</td>
-                                        <td><img src="${i.thumbnail}" alt=""></td>
-                                        <td>${i.description}</td>
-                                        <td class="price">${i.price}</td>
-                                        <td class="discount">${i.discount}</td>
-                                        <td class="remain_quality">${i.remainQuality}</td>
-                                        <td>${i.category.categoryName}</td>
+                                        <td name="Order_ID" class="orderId">${i.id}</td>
+                                        <td name="fullname">${i.fullname}</td>
+                                        <td name="email">${i.email}</td>
+                                        <td name="phoneNumber">${i.phoneNumber}</td>
+                                        <td name="address">${i.address}</td>
+                                        <td name="note">${i.note}</td>
+                                        <td name="price">${i.price}</td>
+                                        <td name="shippingFee">${i.shippingFee}</td>
+                                        <td name="total">${i.price + i.shippingFee}</td>
                                         <td>
-                                            <c:url var="editURL" value="/admin-quan-ly-sach">
-                                                <c:param name="action" value="edit"/>
-                                                <c:param name="id" value="${i.id}"/>
-                                            </c:url>
-                                            <a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                               title="Cập nhật sản phẩm" href='${editURL}'>
-                                                <i class="fa-solid fa-pencil"></i>
-                                            </a>
+                                            <button style="padding: 10px 15px; border:0px" class="btnShow"
+                                                    value="${i.id}">Show
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <input type="hidden" class="orderId" value="${i.id}">
+                                            <button class="myButton" value="${i.orderStatus.id}"></button>
                                         </td>
                                     </tr>
                                 </c:forEach>
@@ -487,16 +582,13 @@
                         </div>
                     </div>
                 </div>
-    <div class="text-center" style="margin: 0 auto">
-        <ul class="pagination" id="pagination"></ul>
-    </div>
 
             </div>
 
-<%--            <!-- /.container-fluid -->--%>
+            <%--            <!-- /.container-fluid -->--%>
         </div>
 
-<%--        <!-- End of Main Content -->--%>
+        <%--        <!-- End of Main Content -->--%>
 
         <!-- Footer -->
         <!-- <footer class="sticky-footer bg-white">
@@ -512,7 +604,6 @@
     <!-- End of Content Wrapper -->
 </div>
 <!-- End of Page Wrapper -->
-
 
 
 <!-- Scroll to Top Button-->
@@ -566,36 +657,37 @@
         let sortBy = $('#sortBy').val();
         let sortName = $('#sortName').val();
 
-       $('#hiddenSortBy').val(sortBy);
-       $('#hiddenSortName').val(sortName);
-       $('#exportForm').submit();
+        $('#hiddenSortBy').val(sortBy);
+        $('#hiddenSortName').val(sortName);
+        $('#exportForm').submit();
     });
 </script>
 <script>
-    function sortTable() {
-        let table = $('#dataTable');
-        let tbody = table.find('tbody');
-        let sortBy = $('#sortBy').val();
-        let sortName =$('#sortName').val();
-        let rows = tbody.find('tr').get();
-
-        rows.sort(function(a, b) {
-            var cellA = $(a).find("td." + sortBy).text();
-            var cellB = $(b).find("td." + sortBy).text();
-
-          if(sortName== 'asc') {
-              return cellA.localeCompare(cellB, "en", { numeric: true });
-          } else {
-              return cellB.localeCompare(cellA, "en", { numeric: true });
-          }
-        });;
-        $.each(rows, function(index, row) {
-            tbody.append(row);
-        });
-    }
+    // function sortTable() {
+    //     let table = $('#dataTable');
+    //     let tbody = table.find('tbody');
+    //     let sortBy = $('#sortBy').val();
+    //     let sortName = $('#sortName').val();
+    //     let rows = tbody.find('tr').get();
+    //
+    //     rows.sort(function (a, b) {
+    //         var cellA = $(a).find("td." + sortBy).text();
+    //         var cellB = $(b).find("td." + sortBy).text();
+    //
+    //         if (sortName == 'asc') {
+    //             return cellA.localeCompare(cellB, "en", {numeric: true});
+    //         } else {
+    //             return cellB.localeCompare(cellA, "en", {numeric: true});
+    //         }
+    //     });
+    //     ;
+    //     $.each(rows, function (index, row) {
+    //         tbody.append(row);
+    //     });
+    // }
 </script>
 <script>
-    let totalPages= ${paging.totalPage};
+    let totalPages = ${paging.totalPage};
     let currentPage = ${paging.page};
     let limit = 3;
     $(function () {
@@ -609,7 +701,7 @@
                 // let sortBy = $('#sortBy').val();
                 // let sortName = $('#sortName').val();
                 // let url = "admin-quan-ly-sach?page="+page+"&maxPageItem=" +limit + "&sortBy="+sortBy + "&sortName="+sortName+"";
-                if(currentPage != page) {
+                if (currentPage != page) {
                     $('#maxPageItem').val(limit);
                     $('#page').val(page);
                     $('#formSubmit').submit();
@@ -654,19 +746,19 @@
 
         function deleteProduct(ids) {
             $.ajax({
-                url: "api/v1/books",
+                url: "api/v1/order/details",
                 type: 'DELETE',
                 contentType: 'application/json',
                 data: JSON.stringify({'ids': ids}),
                 dataType: 'json',
                 success: function (result) {
-                    alert('Delete book success');
+                    alert('Delete success');
                     setTimeout(() => {
                         location.reload();
                     }, 3000);
                 },
                 fail: function (error) {
-                    alert('Delete book fail');
+                    alert('Delete fail');
                     setTimeout(() => {
                         location.reload();
                     }, 3000);
@@ -675,6 +767,149 @@
         }
     });
 </script>
-</body>
+<script>
+    $(document).ready(function () {
+        change();
+    });
 
+    function change() {
+        $('.myButton').each(function () {
+            let val = $(this).val();
+            if (val == 1) {
+                $(this).text("Chờ duyệt");
+                $(this).css('background-color', '#00FFFF');
+            } else if (val == 2) {
+                $(this).text("Đang vận chuyển");
+                $(this).css('background-color', '#FFFF66');
+            } else if (val == 3) {
+                $(this).text("Hoàn thành");
+                $(this).css('background-color', '#00FF66');
+            }
+        });
+    }
+
+    // $(document).ready(function() {
+    let buttonInfo = [
+        {color: '#00FFFF', value: '1', text: 'Chờ duyệt'},
+        {color: '#FFFF66', value: '2', text: 'Đang vận chuyển'},
+        {color: '#00FF66', value: '3', text: 'Hoàn thành'}
+    ];
+
+    // let currentIndex = 0;
+    let timeOut;
+    $(document).on('click', '.myButton', function () {
+        clearTimeout(timeOut);
+        let val = parseInt($(this).val());
+        // console.log(val);
+        // $(this).css('background-color', buttonInfo[val - 1].color);
+        // currentIndex = (currentIndex + 1) % buttonInfo.length;?
+        if (val == 3) {
+            val = 1;
+        } else {
+            val++;
+        }
+        let self = $(this);
+        $(this).css('background-color', buttonInfo[val - 1].color);
+        $(this).val(val);
+        $(this).text(buttonInfo[val - 1].text);
+        timeOut = setTimeout(function() {
+            let orderIdInput = self.siblings('.orderId');
+            let orderId = orderIdInput.val();
+            let statusId = parseInt(self.val());
+            changeStatus(orderId, statusId);
+
+        }, 2000);
+    });
+
+    function changeStatus(orderId, statusId) {
+        let data = {
+            id: orderId,
+            orderStatus: {
+                id: statusId
+            }
+        }
+        $.ajax({
+            url: 'api/v1/order/details',
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function(response) {
+            }
+        });
+    }
+
+    // });
+</script>
+<script>
+    $(document).on('click', '.btnShow', function () {
+        let val = parseInt($(this).val());
+        $.ajax({
+            url: 'api/v1/order/products',
+            type: 'GET',
+            data: {
+                id: val
+            },
+            success: function (response) {
+                displayTable(response);
+            }
+
+        });
+    });
+
+    function displayTable(data) {
+        let html = "";
+        for (let i = 0; i < data.length; i++) {
+            html += '<tr> <td>' + data[i].product.title + '</td><td>' + data[i].num + '</td></tr>';
+        }
+        $('#tbody').html(html);
+        $('.list-product').addClass('display-block');
+        $('.background-cover').addClass('display-not-block');
+
+    }
+
+    $(document).on('click', '.remove-display', function () {
+
+        $('.background-cover').removeClass('display-not-block');
+        $('.list-product').removeClass('display-block');
+    });
+
+    $('#status').on('click', function () {
+        let val = parseInt($(this).val());
+        // console.log('data: ' + val);
+        $.ajax({
+            url: 'api/v1/order/details',
+            type: 'GET',
+            data: {
+                id: val
+            },
+            success: function (response) {
+                console.log("response : " + response);
+                display(response);
+            }
+        });
+    });
+
+    function display(data) {
+        let htmlText = "";
+        for (let i = 0; i < data.length; i++) {
+            htmlText += '<tr> <td><input type="checkbox" class="check-input" name="id" value="' + data[i].id + '">' +
+                '</td> <td name="Order_ID">' + data[i].id + '</td>' +
+                '<td name="fullname">' + data[i].fullname + '</td> ' +
+                '<td name="email">' + data[i].email + '</td> ' +
+                '<td name="phoneNumber">' + data[i].phoneNumber + '</td> ' +
+                '<td name="address">' + data[i].address + '</td> ' +
+                '<td name="note">' + data[i].note + '</td> ' +
+                '<td name="price">' + data[i].price + '</td> ' +
+                '<td name="shippingFee">' + data[i].shippingFee + '</td> ' +
+                '<td name="total">' + (data[i].shippingFee + data[i].price) + '</td> ' +
+                '<td> <button style="padding: 10px 15px; border:0px" class="btnShow" value="' + data[i].id + '">Show </button> </td> ' +
+                '<td><input type="hidden" class="orderId" value="'+ data[i].id+'"> <button class="myButton" value="' + data[i].orderStatus.id + '"></button> </td> </tr>';
+        }
+        $('.table-body').html(htmlText);
+        change();
+    }
+
+
+</script>
+</body>
 </html>

@@ -12,4 +12,5 @@ public interface IUserDAO {
     public UserModel findByEmail(String email);
     public UserModel findById(Long id);
     public void update(UserModel user);
+    public void delete(Long id);
 }

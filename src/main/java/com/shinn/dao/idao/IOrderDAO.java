@@ -10,4 +10,8 @@ public interface IOrderDAO{
     public OrderModel findByOrderId(Long id);
     public int countBoughtOrder();
     public int countOrderUnconfirm();
+    public List<OrderModel> findAll();
+    public List<OrderModel> findByStatusId(Long statusId);
+    public void updateStatus(Long orderId, Long statusId);
+    public void delete(Long id);
 }

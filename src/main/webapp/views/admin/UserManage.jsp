@@ -5,7 +5,7 @@
   Time: 12:30
   To change this template use File | Settings | File Templates.
 --%>
-<%@ include file="/common/taglib.jsp"%>
+<%@ include file="/common/taglib.jsp" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,18 +21,18 @@
     <title>SB Admin 2 - Tables</title>
 
     <!-- Custom fonts for this template -->
-<%--    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
+    <%--    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
     <link rel="stylesheet" href="<c:url value="/template/admin/vendor/fontawesome-free/css/all.min.css"/>">
     <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom styles for this template -->
-<%--    <link href="css/sb-admin-2.css" rel="stylesheet">--%>
+    <%--    <link href="css/sb-admin-2.css" rel="stylesheet">--%>
 
     <link rel="stylesheet" href="<c:url value="/template/admin/css/sb-admin-2.css"/>">
     <!-- Custom styles for this page -->
-<%--    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">--%>
+    <%--    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">--%>
     <link rel="stylesheet" href="<c:url value="/template/admin/vendor/datatables/dataTables.bootstrap4.min.css"/>">
 </head>
 
@@ -60,7 +60,7 @@
         <li class="nav-item active">
             <a class="nav-link" href="<c:url value="/admin-trang-chu"/>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+                <span>Thống kê</span></a>
         </li>
 
         <!-- Divider -->
@@ -68,27 +68,28 @@
 
         <!-- Heading -->
         <!-- <div class="sidebar-heading">
-           Interface
-       </div> -->
+            Interface
+        </div> -->
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="UserManage.html">
+            <a class="nav-link" href="<c:url value="/admin-quan-ly-tai-khoan"/>">
                 <i class="fas fa-user"></i>
                 <span>Quản lý tài khoản</span>
             </a>
             <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-               <div class="bg-white py-2 collapse-inner rounded">
-                   <h6 class="collapse-header">Custom Components:</h6>
-                   <a class="collapse-item" href="buttons.html">Buttons</a>
-                   <a class="collapse-item" href="cards.html">Cards</a>
-               </div>
-           </div> -->
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Components:</h6>
+                    <a class="collapse-item" href="buttons.html">Buttons</a>
+                    <a class="collapse-item" href="cards.html">Cards</a>
+                </div>
+            </div> -->
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="BookManage.html">
+            <a class="nav-link"
+               href="<c:url value="/admin-quan-ly-sach?page=1&maxPageItem=3&sortBy=Product_ID&sortName=asc"/>">
                 <i class="fas fa-book"></i>
                 <span>Quản lý sách</span>
             </a>
@@ -97,17 +98,10 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<c:url value="/admin-quan-ly-don-hang"/>">
                 <i class="fal fa-file-invoice"></i>
                 <span>Quản lý đơn hàng</span>
             </a>
-        </li>
-
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="fas fa-money-bill-alt"></i>
-                <span>Thống kê doanh thu</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
@@ -262,7 +256,8 @@
                                 </div>
                                 <div class="font-weight-bold">
                                     <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                        problem I've been having.</div>
+                                        problem I've been having.
+                                    </div>
                                     <div class="small text-gray-500">Emily Fowler · 58m</div>
                                 </div>
                             </a>
@@ -273,7 +268,8 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">I have the photos that you ordered last month, how
-                                        would you like them sent to you?</div>
+                                        would you like them sent to you?
+                                    </div>
                                     <div class="small text-gray-500">Jae Chun · 1d</div>
                                 </div>
                             </a>
@@ -284,7 +280,8 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">Last month's report looks great, I am very happy with
-                                        the progress so far, keep up the good work!</div>
+                                        the progress so far, keep up the good work!
+                                    </div>
                                     <div class="small text-gray-500">Morgan Alvarez · 2d</div>
                                 </div>
                             </a>
@@ -296,7 +293,8 @@
                                 </div>
                                 <div>
                                     <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                        told me that people say this to all dogs, even if they aren't good...</div>
+                                        told me that people say this to all dogs, even if they aren't good...
+                                    </div>
                                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                 </div>
                             </a>
@@ -349,7 +347,8 @@
                         <span>Quản lý User</span>
                         <div class="text-right">
                             <a flag="info" class="dt-button buttons-colvis btn btn-white btn-primary btn-bold"
-                               data-toggle="tooltip" title='Thêm người dùng' href="<c:url value="/admin-quan-ly-tai-khoan?action=addNew"/>">
+                               data-toggle="tooltip" title='Thêm người dùng'
+                               href="<c:url value="/admin-quan-ly-tai-khoan?action=addNew"/>">
                                     <span>
                                         <i class="fa fa-plus-circle bigger-110 purple"></i>
                                     </span>
@@ -383,6 +382,7 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
+                                    <th><input type="checkbox" id="check">All</th>
                                     <th>User ID</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
@@ -393,22 +393,23 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                              <c:forEach var="i" items="${listUser}">
-                                  <tr>
-                                      <td>${i.id}</td>
-                                      <td>${i.firstName}</td>
-                                      <td>${i.lastName}</td>
-                                      <td>${i.email}</td>
-                                      <td>${i.phoneNumber}</td>
-                                      <td>${i.role.name}</td>
-                                      <c:url var="editUrl" value="/admin-quan-ly-tai-khoan?action=edit">
-                                          <c:param name="id" value="${i.id}"></c:param>
-                                      </c:url>
-                                      <td><a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
-                                             title="Cập san pham" href="${editUrl}"><i class="fa-solid fa-pencil"></i>
-                                      </a></td>
-                                  </tr>
-                              </c:forEach>
+                                <c:forEach var="i" items="${listUser}">
+                                    <tr>
+                                        <td><input type="checkbox" class="check-input" name="${i.id}" value="${i.id}">
+                                        <td>${i.id}</td>
+                                        <td>${i.firstName}</td>
+                                        <td>${i.lastName}</td>
+                                        <td>${i.email}</td>
+                                        <td>${i.phoneNumber}</td>
+                                        <td>${i.role.name}</td>
+                                        <c:url var="editUrl" value="/admin-quan-ly-tai-khoan?action=edit">
+                                            <c:param name="id" value="${i.id}"></c:param>
+                                        </c:url>
+                                        <td><a class="btn btn-sm btn-primary btn-edit" data-toggle="tooltip"
+                                               title="Cập san pham" href="${editUrl}"><i class="fa-solid fa-pencil"></i>
+                                        </a></td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -462,6 +463,7 @@
     </div>
 </div>
 
+
 <!-- Bootstrap core JavaScript-->
 <%--<script src="vendor/jquery/jquery.min.js"></script>--%>
 <script src="<c:url value="/template/admin/vendor/jquery/jquery.min.js"/>"></script>
@@ -481,6 +483,52 @@
 <!-- Page level custom scripts -->
 <%--<script src="js/demo/datatables-demo.js"></script>--%>
 <script src="<c:url value="/template/admin/js/demo/datatables-demo.js"/>"></script>
+<script>
+    // function alertne() {
+    //     alert("hello");
+    // }
+
+    $('#check').on('click', function() {
+        console.log("hello");
+        let isChecked = $(this).prop('checked');
+        $('.check-input').prop('checked', isChecked);
+    });
+
+    $('#btnDelete').click(function () {
+        let listInput = document.querySelectorAll('.check-input');
+        let ids = [];
+        listInput.forEach(function (checkboxInput) {
+            if (checkboxInput.checked) {
+                ids.push(checkboxInput.value);
+            }
+        });
+
+
+        deleteProduct(ids);
+
+        function deleteProduct(ids) {
+            $.ajax({
+                url: "api/v1/users",
+                type: 'DELETE',
+                contentType: 'application/json',
+                data: JSON.stringify({'ids': ids}),
+                dataType: 'json',
+                success: function (result) {
+                    alert('Delete book success');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 3000);
+                },
+                fail: function (error) {
+                    alert('Delete book fail');
+                    setTimeout(() => {
+                        location.reload();
+                    }, 3000);
+                }
+            });
+        }
+    });
+</script>
 </body>
 
 </html>

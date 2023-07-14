@@ -54,7 +54,13 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
     @Override
     public void update(UserModel user) {
-        String sql = "UPDATE User set Email=?, First_Name=?, Last_Name=?, Phone_Number=?, Modified_Date=?, Role_Id=?";
-        update(sql, user.getEmail(), user.getFirstName(), user.getLastName(), user.getPhoneNumber(), user.getModifiedDate(), user.getRole().getId());
+        String sql = "UPDATE User set Email=?, First_Name=?, Last_Name=?, Phone_Number=?, Modified_Date=?, Role_Id=? WHERE User_ID=?";
+        update(sql, user.getEmail(), user.getFirstName(), user.getLastName(), user.getPhoneNumber(), user.getModifiedDate(), user.getRole().getId(), user.getId());
+    }
+
+    @Override
+    public void delete(Long id) {
+        String sql = "DELETE FROM User WHERE User_ID=?";
+        update(sql, id);
     }
 }

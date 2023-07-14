@@ -79,9 +79,9 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<c:url value="/admin-trang-chu"/>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
+                <span>Thống kê</span></a>
         </li>
 
         <!-- Divider -->
@@ -89,27 +89,28 @@
 
         <!-- Heading -->
         <!-- <div class="sidebar-heading">
-           Interface
-       </div> -->
+            Interface
+        </div> -->
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="UserManage.html">
+            <a class="nav-link" href="<c:url value="/admin-quan-ly-tai-khoan"/>">
                 <i class="fas fa-user"></i>
                 <span>Quản lý tài khoản</span>
             </a>
             <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-               <div class="bg-white py-2 collapse-inner rounded">
-                   <h6 class="collapse-header">Custom Components:</h6>
-                   <a class="collapse-item" href="buttons.html">Buttons</a>
-                   <a class="collapse-item" href="cards.html">Cards</a>
-               </div>
-           </div> -->
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Components:</h6>
+                    <a class="collapse-item" href="buttons.html">Buttons</a>
+                    <a class="collapse-item" href="cards.html">Cards</a>
+                </div>
+            </div> -->
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="<c:url value="/admin-quan-ly-sach?page=1&maxPageItem=3&sortBy=Product_ID&sortName=asc"/>">
+            <a class="nav-link"
+               href="<c:url value="/admin-quan-ly-sach?page=1&maxPageItem=3&sortBy=Product_ID&sortName=asc"/>">
                 <i class="fas fa-book"></i>
                 <span>Quản lý sách</span>
             </a>
@@ -118,17 +119,10 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<c:url value="/admin-quan-ly-don-hang"/>">
                 <i class="fal fa-file-invoice"></i>
                 <span>Quản lý đơn hàng</span>
             </a>
-        </li>
-
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="">
-                <i class="fas fa-money-bill-alt"></i>
-                <span>Thống kê doanh thu</span></a>
         </li>
 
         <!-- Nav Item - Tables -->

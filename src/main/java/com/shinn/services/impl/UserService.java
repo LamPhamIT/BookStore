@@ -5,6 +5,7 @@ import com.shinn.dao.impl.UserDAO;
 import com.shinn.model.UserModel;
 import com.shinn.services.IService.IUserService;
 import javax.inject.Inject;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class UserService implements IUserService {
@@ -50,6 +51,14 @@ public class UserService implements IUserService {
 
     @Override
     public void updateUser(UserModel user) {
+        user.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        userDAO.update(user);
+    }
 
+    @Override
+    public void delete(UserModel user) {
+        for(int i = 0; i < user.getIds().length; i++) {
+            userDAO.delete(user.getIds()[i]);
+        }
     }
 }

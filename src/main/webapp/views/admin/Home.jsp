@@ -46,7 +46,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<c:url value="/admin-trang-chu"/>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Thống kê</span></a>
         </li>
@@ -86,7 +86,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<c:url value="/admin-quan-ly-don-hang"/>">
                 <i class="fal fa-file-invoice"></i>
                 <span>Quản lý đơn hàng</span>
             </a>
@@ -517,46 +517,46 @@
 
 
                 <!-- Content Row -->
-                <div class="row">
+<%--                <div class="row">--%>
 
-                    <!-- Content Column -->
-                    <div class="col-lg-6 mb-4">
+<%--                    <!-- Content Column -->--%>
+<%--                    <div class="col-lg-6 mb-4">--%>
 
-                        <!-- Project Card Example -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Sản phẩm bán chạy nhât</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="wrapper">
-                                    <img src="" alt=""></img>
-                                    <div class="inforr">
+<%--                        <!-- Project Card Example -->--%>
+<%--                        <div class="card shadow mb-4">--%>
+<%--                            <div class="card-header py-3">--%>
+<%--                                <h6 class="m-0 font-weight-bold text-primary">Sản phẩm bán chạy nhât</h6>--%>
+<%--                            </div>--%>
+<%--                            <div class="card-body">--%>
+<%--                                <div class="wrapper">--%>
+<%--                                    <img src="" alt=""></img>--%>
+<%--                                    <div class="inforr">--%>
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
 
-                        <!-- Color System -->
+<%--                        <!-- Color System -->--%>
 
-                    </div>
+<%--                    </div>--%>
 
-                    <div class="col-lg-6 mb-4">
+<%--                    <div class="col-lg-6 mb-4">--%>
 
-                        <!-- Illustrations -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Blog nhiều tương tác nhất</h6>
-                            </div>
-                            <div class="card-body">
+<%--                        <!-- Illustrations -->--%>
+<%--                        <div class="card shadow mb-4">--%>
+<%--                            <div class="card-header py-3">--%>
+<%--                                <h6 class="m-0 font-weight-bold text-primary">Blog nhiều tương tác nhất</h6>--%>
+<%--                            </div>--%>
+<%--                            <div class="card-body">--%>
 
-                            </div>
-                        </div>
+<%--                            </div>--%>
+<%--                        </div>--%>
 
-                        <!-- Approach -->
+<%--                        <!-- Approach -->--%>
 
-                    </div>
-                </div>
+<%--                    </div>--%>
+<%--                </div>--%>
 
             </div>
             <!-- /.container-fluid -->
